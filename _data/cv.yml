@@ -1,189 +1,166 @@
 cv:
-  name: Albert Einstein
-  label: Scientist
-  email: einstein@example.com
-  location: Princeton, NJ
+  name: Shijie Yuan
+  label: Autonomous Driving Algorithm Engineer & Researcher
+  email: yuansj@hnu.edu.cn
+  location: Shanghai, China
   image: ""
-  summary: A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time
+  summary: Researcher and engineer specializing in learning-based motion planning, safe reinforcement learning, trajectory optimization, and autonomous driving.
 
   social_networks:
-    - network: X
-      username: AlbertEinstein
     - network: GitHub
-      username: example
-    - network: LinkedIn
-      username: example
-
-  address:
-    street: 2712 Broadway St
-    city: San Francisco
-    region: California
-    postalCode: CA 94115
-    countryCode: US
+      username: wenqing-2021
 
   sections:
     Education:
-      - institution: University of Zurich
-        location: Zurich, Switzerland
-        url: https://www.uzh.ch/
-        area: Physics
-        studyType: PhD
-        start_date: 1900
-        end_date: 1905
-        score: ""
-        courses: "Theory of Relativity"
+      - institution: Hunan University
+        location: Changsha, China
+        url: https://www-en.hnu.edu.cn/
+        area: Mechanical Engineering
+        studyType: Master of Engineering
+        start_date: 2021-09
+        end_date: 2024-06
+        score: "GPA: 3.57/4.0"
         highlights:
-          - Description 1.
-          - Description 2.
+          - "Thesis: The Trajectory Planning Method Combining Reinforcement Learning and Risk-Reachable Sets"
+          - "Research: risk-aware planning, deep reinforcement learning, and autonomous driving"
 
-      - institution: Eidgenössische Technische Hochschule
-        location: Zurich, Switzerland
-        area: Physics
-        studyType: Federal teaching diploma
-        start_date: 1896
-        end_date: 1900
+      - institution: Dalian University of Technology
+        location: Dalian, China
+        url: https://en.dlut.edu.cn/
+        area: Vehicle Engineering
+        studyType: Bachelor of Engineering
+        start_date: 2017-09
+        end_date: 2021-06
+        score: "GPA: 3.45/4.0"
         highlights:
-          - Description 1.
-          - Description 2.
+          - Excellent Graduate of Dalian University of Technology
 
-    Experience:
-      - company: Institute for Advanced Study, Princeton University
-        position: Professor of Theoretical Physics
-        location: Princeton University, NJ
-        start_date: 1933
-        end_date: 1955
-        summary: Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.
+    Professional Experience:
+      - company: Li Auto Inc.
+        position: Autonomous Driving Algorithm Engineer — Open-loop RL for Velocity Planning
+        location: China
+        start_date: 2026-01
+        end_date: 2026-06
+        summary: Developed reinforcement-learning-based velocity planning for production urban autonomous driving.
         highlights:
-          - Relativity
-          - Description 2.
+          - Designed collision-risk assessment based on time-to-collision for reinforcement learning rewards.
+          - Developed traffic-aware driving-efficiency objectives and data-mining tools for training-data analysis.
+          - Contributed to a method deployed in production vehicles.
 
-      - company: California Institute of Technology
-        position: Visiting Professor
-        location: Pasadena, California, US
-        start_date: 1933
-        end_date: 1933
+      - company: Li Auto Inc.
+        position: Autonomous Driving Algorithm Engineer — Urban Trajectory Planning
+        location: China
+        start_date: 2025-05
+        end_date: 2025-12
+        summary: Built learning-based interaction and trajectory modules for complex urban driving scenarios.
         highlights:
-          - Description 1.
-          - Description 2.
+          - Developed a transformer-based interaction module for obstacle-level overtake, yield, and ignore decisions.
+          - Built a transformer-based ego-trajectory module with safety-oriented loss design.
+          - Generated supervised decision labels using a rule-based pipeline and supported production deployment.
 
-      - company: Kaiser Wilhelm Institute for Physics
-        position: Director
-        location: Berlin, Germany
-        start_date: 1917
-        end_date: 1933
-
-      - company: Karl-Ferdinand University
-        position: Professor of Theoretical Physics
-        location: Prague, Czechoslovakia
-        start_date: 1911
-        end_date: 1917
-
-      - company: University of Zurich
-        position: Associate Professor of Theoretical Physics
-        location: Zurich, Switzerland
-        start_date: 1909
-        end_date: 1911
-
-    Volunteer:
-      - company: People's Climate March
-        position: Lead Organizer
-        location: Zurich, Switzerland
-        start_date: 2014-04-01
-        end_date: 2015-07-01
-        summary: Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.
+      - company: Li Auto Inc.
+        position: Autonomous Driving Algorithm Engineer — Learning-based Path Planning
+        location: China
+        start_date: 2024-07
+        end_date: 2025-04
+        summary: Developed learning-based path planning modules for production urban autonomous driving.
         highlights:
-          - "Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march."
-          - "Men of the year 2014 by Time magazine"
+          - Improved occupancy-aware loss computation to enhance path safety.
+          - Developed an anchor-free path planning method to improve smoothness.
+          - Designed evaluation metrics and data-distribution analysis tools for model development.
 
-    Awards:
-      - title: Nobel Prize in Physics
-        authors:
-          - "Royal Swedish Academy of Sciences"
-        date: 1921-11-01
-        awarder: Royal Swedish Academy of Sciences
-        url: https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/
-        summary: The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'
+    Research Projects:
+      - name: Risk-Reachable Set-based Motion Planning
+        start_date: 2023-11
+        end_date: 2024-05
+        summary: Master's thesis combining risk estimation, safe reinforcement learning, reachable sets, and constrained iLQR.
+        highlights:
+          - Used Gaussian-process regression to assess spatiotemporal driving risk and construct risk-reachable sets.
+          - Generated initial trajectories with PPO-Lagrangian and projected them onto safe and feasible sets.
+          - Improved average driving speed by 49% and reduced maximum jerk by 52% over sampling-based baselines in high-speed merging simulations.
 
-      - title: Max Planck Medal
-        authors:
-          - "German Physical Society"
-        date: 2029
-        awarder: German Physical Society
-        summary: Awarded for outstanding scientific achievement
+      - name: Safe Motion Planning for Automated Valet Parking
+        start_date: 2022-11
+        end_date: 2023-02
+        summary: Open-source trajectory planning framework for automated parking in unstructured environments.
+        highlights:
+          - Integrated Hybrid A*, quadratic-programming-based path optimization, interpolation, velocity planning, and optimal control.
+          - Validated parallel and perpendicular parking scenarios in narrow spaces.
+
+      - name: Optimal Trajectory Planning in Narrow Corridors
+        start_date: 2022-06
+        end_date: 2022-11
+        summary: Space-discretization-based trajectory planning for autonomous vehicles in constrained environments.
+        highlights:
+          - Formulated a quadratic programming problem with vehicle, boundary, comfort, and efficiency constraints.
+          - Validated the method through simulations and field experiments.
+
+      - name: Safe Reinforcement Learning for On-Ramp Merging
+        start_date: 2021-11
+        end_date: 2022-06
+        summary: Hierarchical decision-making framework combining safe reinforcement learning and model predictive control.
+        highlights:
+          - Designed a rule-based action shielding module to replace unsafe decisions during training and execution.
+          - Evaluated safety and efficiency under different traffic densities.
 
     Publications:
-      - title: Zur Elektrodynamik bewegter Körper
+      - title: Adaptive Constraint Regulation for Human Preference-Aware Safe Reinforcement Learning of On-Ramp Merging
         authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-06-30
-        url: https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies
-        summary: It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source.
+          - Jingjia Teng
+          - Wenjie Huang
+          - Shijie Yuan
+          - Manjiang Hu
+          - Hongmao Qin
+          - Yang Li
+          - Yougang Bian
+          - Bai Li
+        publisher: Machines, 14(6), 605
+        releaseDate: 2026-05-28
+        url: https://doi.org/10.3390/machines14060605
 
-      - title: Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt
+      - title: Space Discretization-Based Optimal Trajectory Planning for Automated Vehicles in Narrow Corridor Scenes
         authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1905-03-18
-        url: https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt
-        summary: In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921.
+          - Biao Xu
+          - Shijie Yuan
+          - Xuerong Lin
+          - Manjiang Hu
+          - Yougang Bian
+          - Zhaobo Qin
+        publisher: Electronics, 11(24), 4239
+        releaseDate: 2022-12-19
+        url: https://doi.org/10.3390/electronics11244239
 
-      - title: Die Grundlage der allgemeinen Relativitätstheorie
-        authors:
-          - Albert Einstein
-        publisher: Annalen der Physik
-        releaseDate: 1916-03-20
-        url: https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie
-        summary: The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914).
+    Awards:
+      - title: Excellent Graduate of Dalian University of Technology
+        date: 2021
+        awarder: Dalian University of Technology
+
+      - title: China Undergraduate Mathematical Contest in Modeling — Second Prize, Liaoning Province
+        date: 2020
+        awarder: CUMCM
+
+      - title: Technological Innovation Award
+        date: 2020
+        awarder: Dalian University of Technology
+
+      - title: Asia and Pacific Mathematical Contest in Modeling — First Prize
+        date: 2019
+        awarder: APMCM
 
     Skills:
-      - name: Physics
-        level: Master
-        icon: fa-solid fa-hashtag
-        keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
+      - name: Programming
+        icon: fa-solid fa-code
+        keywords: "C++, Python"
 
-    Languages:
-      - name: German
-        summary: "Native speaker"
+      - name: Robotics & ML
+        icon: fa-solid fa-robot
+        keywords: "ROS, PyTorch, reinforcement learning, motion planning, trajectory optimization"
 
-      - name: English
-        summary: "Fluent"
+      - name: Engineering Tools
+        icon: fa-solid fa-screwdriver-wrench
+        keywords: "Linux, Git, Docker"
 
-    Interests:
-      - name: Physics
-        icon: fa-solid fa-tag
-        keywords: "Quantum Mechanics, Quantum Computing, Quantum Information, Quantum Cryptography, Quantum Communication, Quantum Teleportation"
-
-    Certificates:
-      - name: Machine Learning
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-location-dot
-
-      - name: Quantum Computing
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-tag
-
-      - name: Quantum Information
-        date: 2018-01-01
-        issuer: Stanford University
-        icon: fa-solid fa-envelope
-
-    Projects:
-      - name: Quantum Computing
-        summary: Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.
-        highlights:
-          - Quantum Teleportation
-          - Quantum Cryptography
-        start_date: 2018-01-01
-        end_date: 2018-01-01
-
-    References:
-      - name: Professor John Doe
-        icon: fa-solid fa-laptop
-        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.
-
-      - name: Professor Jane Smith
-        icon: fa-solid fa-thumbtack
-        reference: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit.
+    Research Interests:
+      - name: Autonomous Driving
+        icon: fa-solid fa-car
+        keywords: "Safe reinforcement learning, risk-aware planning, learning-based decision making, motion planning, trajectory optimization"
