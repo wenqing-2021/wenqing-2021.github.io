@@ -20,48 +20,164 @@
   :root {
     --max-content-width: 1050px;
   }
-</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%97&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://wenqing-2021.github.io/"> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item active"> <a class="nav-link" href="/">about <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title"> Shijie Yuan </h1> <p class="desc">Autonomous Driving · Motion Planning · Safe Reinforcement Learning</p> </header> <article> <div class="profile float-right"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/prof_pic-480.webp 480w,/assets/img/prof_pic-800.webp 800w,/assets/img/prof_pic-1400.webp 1400w," type="image/webp" sizes="(min-width: 1050px) 306.0px, (min-width: 576px) 30vw, 95vw"> <img src="/assets/img/prof_pic.jpg?v=9a0aa5603231dbd614cd8808abd765cc" class="img-fluid z-depth-1 rounded" width="100%" height="auto" alt="prof_pic.jpg" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </source></picture> </figure> <div class="more-info"> <p><strong>Shanghai, China</strong></p> </div> </div> <div class="clearfix"> <style>
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%97&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://wenqing-2021.github.io/"> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item active"> <a class="nav-link" href="/">about <span class="sr-only">(current)</span> </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item "> <a class="nav-link" href="/projects/">projects </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title"> Shijie Yuan </h1> <p class="desc"></p> </header> <article> <div class="profile float-left"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/prof_pic-480.webp 480w,/assets/img/prof_pic-800.webp 800w,/assets/img/prof_pic-1400.webp 1400w," type="image/webp" sizes="(min-width: 1050px) 306.0px, (min-width: 576px) 30vw, 95vw"> <img src="/assets/img/prof_pic.jpg?v=9a0aa5603231dbd614cd8808abd765cc" class="img-fluid z-depth-1 rounded" width="100%" height="auto" alt="prof_pic.jpg" loading="eager" onerror="this.onerror=null; document.querySelectorAll('.responsive-img-srcset').forEach(function (n) { n.remove(); });"> </source></picture> </figure> <div class="more-info"> <p class="profile-name">Shijie Yuan</p> <p class="profile-location">Shanghai, China</p> <div class="profile-social-links"> <a href="mailto:yuansj@hnu.edu.cn" title="Email"><i class="fa-solid fa-envelope"></i> yuansj@hnu.edu.cn</a> <a href="https://github.com/wenqing-2021" title="GitHub" rel="external nofollow noopener" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a> <a href="https://scholar.google.com/citations?user=iLVzwyUAAAAJ&amp;hl=en" title="Google Scholar" rel="external nofollow noopener" target="_blank"><i class="ai ai-google-scholar"></i> Google Scholar</a> </div> </div> </div> <div class="clearfix"> <style>
+  /* === Fonts === */
+  body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .post-title, .title, .navbar-brand,
+  .profile .name {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+  }
+
+  figcaption, .caption, .pub-meta, .news-date,
+  .profile-location, .more-info {
+    font-family: Georgia, Times, serif;
+  }
+
+  code, pre, kbd, samp,
+  .highlight, .code {
+    font-family: Monaco, Consolas, "Lucida Console", monospace;
+  }
+
+  /* === Fix bold text (overridden by theme) === */
+  strong, b {
+    font-weight: 600;
+  }
+
+  /* === Hide theme's top-level name & subtitle === */
+  .post-title,
+  .desc {
+    display: none;
+  }
+
+  .post-header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
   .profile {
-    width: 42%;
-    max-width: 180px;
+    width: 36%;
+    max-width: 130px;
+    margin-right: 3rem !important;
   }
 
   .profile .more-info {
-    text-align: center;
+    text-align: left;
     font-size: 0.78rem;
+    width: 100%;
+  }
+
+  .profile-name {
+    margin: 0.45rem 0 0.1rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: var(--global-text-color);
   }
 
   @media (min-width: 576px) {
     .profile {
-      width: 21%;
+      width: 18%;
     }
   }
 
-  .compact-social-links {
+  /* --- profile column gap to content --- */
+  .post-header + .row,
+  .about .row,
+  div:has(> .profile) {
+    gap: 3rem;
+  }
+
+  .profile-location {
+    margin: 0.15rem 0 1.2rem !important;
+    font-size: 0.8rem;
+    color: var(--global-text-color-light, #666);
+  }
+
+  .profile-social-links {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.1rem;
-    margin: 2rem 0 0.55rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 0;
   }
 
-  .compact-social-links a {
+  .profile-social-links a {
     color: var(--global-text-color);
-    font-size: 1.5rem;
-    line-height: 1;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
-  .compact-social-links a:hover {
+  .profile-social-links a i,
+  .profile-social-links a .ai {
+    font-size: 1rem;
+    width: 1.2rem;
+    text-align: center;
+  }
+
+  .profile-social-links a:hover {
     color: var(--global-theme-color);
     text-decoration: none;
   }
 
-  .compact-contact-note {
-    margin: 0;
-    text-align: center;
-    font-size: 0.8rem;
+  /* --- align news & publications with body text --- */
+  article > h2,
+  article > .news,
+  article > .publications {
+    margin-left: 11rem;
   }
-</style> <p>I am an autonomous driving algorithm engineer and researcher working at the intersection of <strong>learning-based decision making</strong>, <strong>motion planning</strong>, and <strong>vehicle safety</strong>. I received my M.E. in Mechanical Engineering from <a href="https://www-en.hnu.edu.cn/" rel="external nofollow noopener" target="_blank">Hunan University</a> in 2024 and my B.E. in Vehicle Engineering from <a href="https://en.dlut.edu.cn/" rel="external nofollow noopener" target="_blank">Dalian University of Technology</a> in 2021.</p> <p>My work focuses on turning advanced learning and optimization methods into safe, efficient driving behavior. I recently worked at <strong>Li Auto</strong> (2024–2026), developing learning-based path and trajectory planning modules for production autonomous driving systems. My academic research explores safe reinforcement learning, risk-aware planning, constrained optimization, and their applications to complex driving scenarios.</p> <p>I enjoy building complete research systems—from problem formulation and algorithm design to simulation, evaluation, and open-source implementation. Selected code is available on <a href="https://github.com/wenqing-2021" rel="external nofollow noopener" target="_blank">GitHub</a>, and my publication record is listed on <a href="https://scholar.google.com/citations?user=iLVzwyUAAAAJ&amp;hl=en" rel="external nofollow noopener" target="_blank">Google Scholar</a>.</p> <h2 id="research-highlights">Research highlights</h2> <ul> <li> <strong>Production autonomous driving:</strong> developed learning-based path, trajectory, and velocity planning methods deployed in real vehicles.</li> <li> <strong>Risk-aware planning:</strong> combined Gaussian-process risk estimation, safe reinforcement learning, risk-reachable sets, and constrained iLQR for structured-road trajectory planning.</li> <li> <strong>Open-source motion planning:</strong> built an automated valet parking framework integrating Hybrid A*, path optimization, interpolation, velocity planning, and optimal control.</li> <li> <strong>Safe decision making:</strong> studied constrained reinforcement learning and action shielding for highway on-ramp merging.</li> </ul> <div class="compact-social-links" aria-label="Contact links"> <a href="mailto:yuansj@hnu.edu.cn" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a> <a href="https://github.com/wenqing-2021" title="GitHub" aria-label="GitHub" rel="external nofollow noopener" target="_blank"><i class="fa-brands fa-github"></i></a> <a href="https://scholar.google.com/citations?user=iLVzwyUAAAAJ&amp;hl=en" title="Google Scholar" aria-label="Google Scholar" rel="external nofollow noopener" target="_blank"><i class="ai ai-google-scholar"></i></a> </div> <p class="compact-contact-note">The best way to reach me is by email.</p> </div> <h2> <a href="/news/" style="color: inherit">news</a> </h2> <div class="news"> <div class="table-responsive"> <table class="table table-sm table-borderless"> <tr> <th scope="row" style="width: 20%">May 28, 2026</th> <td> Our paper on <a href="https://doi.org/10.3390/machines14060605" rel="external nofollow noopener" target="_blank">preference-aware safe reinforcement learning for on-ramp merging</a> was published in <em>Machines</em>. </td> </tr> <tr> <th scope="row" style="width: 20%">Jul 01, 2024</th> <td> Joined Li Auto as an Autonomous Driving Algorithm Engineer, working on learning-based planning for urban driving. </td> </tr> <tr> <th scope="row" style="width: 20%">Jun 30, 2024</th> <td> Received my M.E. in Mechanical Engineering from Hunan University. </td> </tr> <tr> <th scope="row" style="width: 20%">Dec 19, 2022</th> <td> Our paper on <a href="https://doi.org/10.3390/electronics11244239" rel="external nofollow noopener" target="_blank">optimal trajectory planning in narrow corridors</a> was published in <em>Electronics</em>. </td> </tr> </table> </div> </div> <h2> <a href="/publications/" style="color: inherit">selected publications</a> </h2> <div class="publications"> <ol class="bibliography"> <li> <div class="row"> <div id="teng2026adaptive" class="col-sm-10"> <div class="title">Adaptive Constraint Regulation for Human Preference-Aware Safe Reinforcement Learning of On-Ramp Merging</div> <div class="author"> Jingjia Teng, Wenjie Huang, <em>Shijie Yuan</em>, and <span class="more-authors" title="click to view 5 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '5 more authors' ? 'Manjiang Hu, Hongmao Qin, Yang Li, Yougang Bian, Bai Li' : '5 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">5 more authors</span> </div> <div class="periodical"> <em>Machines</em>, May 2026 </div> <div class="periodical"> </div> <div class="links"> <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a> <a href="https://doi.org/10.3390/machines14060605" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> <a href="https://www.mdpi.com/2075-1702/14/6/605" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a> <a href="https://github.com/wenqing-2021/On_Ramp_Merge_Safe_RL" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a> </div> <div class="abstract hidden"> <p>A preference-aware safe reinforcement learning framework for highway on-ramp merging, combining adaptive constraint regulation with action shielding to improve the safety-efficiency trade-off.</p> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">teng2026adaptive</span><span class="p">,</span>
+
+  /* --- divider under section headings --- */
+  article > h2 {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.35rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* --- capitalize "news", remove its link --- */
+  article > h2:first-of-type {
+    text-transform: capitalize;
+    font-weight: 300;
+  }
+  article > h2:first-of-type a {
+    pointer-events: none;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* --- rename "selected publications" → "Publications" --- */
+  article > h2:nth-of-type(2) {
+    font-weight: 300;
+  }
+  article > h2:nth-of-type(2) a {
+    font-size: 0;
+    pointer-events: none;
+  }
+  article > h2:nth-of-type(2) a::before {
+    content: "Publications";
+    font-size: 2rem;
+    color: var(--global-text-color);
+  }
+</style> <script>
+  /* --- reformat news dates to YYYY.MM.DD --- */
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('article .news th[scope="row"]').forEach(function (th) {
+      var txt = th.textContent.trim();
+      var d = new Date(txt);
+      if (!isNaN(d.getTime())) {
+        var y = d.getFullYear();
+        var m = String(d.getMonth() + 1).padStart(2, '0');
+        th.textContent = y + '.' + m;
+      }
+    });
+  });
+</script> <p>I am an autonomous driving algorithm engineer currently <strong>seeking Ph.D. opportunities</strong>. I received my M.E. in Mechanical Engineering from <a href="https://www-en.hnu.edu.cn/" rel="external nofollow noopener" target="_blank">Hunan University</a> in 2024 and my B.E. in Vehicle Engineering from <a href="https://en.dlut.edu.cn/" rel="external nofollow noopener" target="_blank">Dalian University of Technology</a> in 2021.</p> <p>At <a href="https://www.liauto.com/" rel="external nofollow noopener" target="_blank">Li Auto</a> (2024–2026), I developed learning-based trajectory planning modules that have been deployed in millions of production vehicles. My research interests include <strong>safe reinforcement learning</strong>, <strong>risk-aware motion planning</strong>, and <strong>constrained optimization</strong> for complex driving scenarios. My long-term goal is to develop safe, intelligent, and trustworthy robotic systems that assist human beings, augment human capabilities, and improve quality of life.</p> </div> <h2> <a href="/news/" style="color: inherit">news</a> </h2> <div class="news"> <div class="table-responsive"> <table class="table table-sm table-borderless"> <tr> <th scope="row" style="width: 20%">May 28, 2026</th> <td> Our paper on <a href="https://doi.org/10.3390/machines14060605" rel="external nofollow noopener" target="_blank">preference-aware safe reinforcement learning for on-ramp merging</a> was published in <em>Machines</em>. </td> </tr> <tr> <th scope="row" style="width: 20%">Jul 01, 2024</th> <td> Joined Li Auto as an Autonomous Driving Algorithm Engineer, working on learning-based planning for urban driving. </td> </tr> <tr> <th scope="row" style="width: 20%">Jun 30, 2024</th> <td> Received my M.E. in Mechanical Engineering from Hunan University. </td> </tr> <tr> <th scope="row" style="width: 20%">Dec 19, 2022</th> <td> Our paper on <a href="https://doi.org/10.3390/electronics11244239" rel="external nofollow noopener" target="_blank">optimal trajectory planning in narrow corridors</a> was published in <em>Electronics</em>. </td> </tr> <tr> <th scope="row" style="width: 20%">Jun 30, 2021</th> <td> Received my B.E. in Vehicle Engineering from Dalian University of Technology, with the honor of Excellent Graduate. </td> </tr> </table> </div> </div> <h2> <a href="/publications/" style="color: inherit">selected publications</a> </h2> <div class="publications"> <ol class="bibliography"> <li> <div class="row"> <div id="teng2026adaptive" class="col-sm-10"> <div class="title">Adaptive Constraint Regulation for Human Preference-Aware Safe Reinforcement Learning of On-Ramp Merging</div> <div class="author"> Jingjia Teng, Wenjie Huang, <em>Shijie Yuan</em>, and <span class="more-authors" title="click to view 5 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '5 more authors' ? 'Manjiang Hu, Hongmao Qin, Yang Li, Yougang Bian, Bai Li' : '5 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">5 more authors</span> </div> <div class="periodical"> <em>Machines</em>, May 2026 </div> <div class="periodical"> </div> <div class="links"> <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a> <a href="https://doi.org/10.3390/machines14060605" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> <a href="https://www.mdpi.com/2075-1702/14/6/605" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a> <a href="https://github.com/wenqing-2021/On_Ramp_Merge_Safe_RL" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a> </div> <div class="abstract hidden"> <p>Safe reinforcement learning for autonomous driving requires balancing safety constraints with driving efficiency. This paper proposes an adaptive constraint regulation framework for human preference-aware safe reinforcement learning in highway on-ramp merging scenarios. The method dynamically adjusts constraint limits according to traffic conditions and driver risk preferences, combined with an action shielding mechanism that filters unsafe decisions before execution. A hierarchical architecture separates high-level maneuver decisions from low-level model predictive control, ensuring both safety compliance and driving efficiency. Simulation experiments across varying traffic densities demonstrate that the proposed approach achieves a superior safety–efficiency trade-off compared to fixed-constraint baselines, maintaining collision-free merging while improving travel efficiency.</p> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">teng2026adaptive</span><span class="p">,</span>
   <span class="na">title</span> <span class="p">=</span> <span class="s">{Adaptive Constraint Regulation for Human Preference-Aware Safe Reinforcement Learning of On-Ramp Merging}</span><span class="p">,</span>
   <span class="na">author</span> <span class="p">=</span> <span class="s">{Teng, Jingjia and Huang, Wenjie and Yuan, Shijie and Hu, Manjiang and Qin, Hongmao and Li, Yang and Bian, Yougang and Li, Bai}</span><span class="p">,</span>
   <span class="na">journal</span> <span class="p">=</span> <span class="s">{Machines}</span><span class="p">,</span>
@@ -72,7 +188,7 @@
   <span class="na">month</span> <span class="p">=</span> <span class="nv">may</span><span class="p">,</span>
   <span class="na">publisher</span> <span class="p">=</span> <span class="s">{MDPI}</span><span class="p">,</span>
   <span class="na">doi</span> <span class="p">=</span> <span class="s">{10.3390/machines14060605}</span><span class="p">,</span>
-<span class="p">}</span></code></pre></figure> </div> </div> </div> </li> <li> <div class="row"> <div id="xu2022space" class="col-sm-10"> <div class="title">Space Discretization-Based Optimal Trajectory Planning for Automated Vehicles in Narrow Corridor Scenes</div> <div class="author"> Biao Xu, <em>Shijie Yuan</em>, Xuerong Lin, and <span class="more-authors" title="click to view 3 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '3 more authors' ? 'Manjiang Hu, Yougang Bian, Zhaobo Qin' : '3 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">3 more authors</span> </div> <div class="periodical"> <em>Electronics</em>, Dec 2022 </div> <div class="periodical"> </div> <div class="links"> <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a> <a href="https://doi.org/10.3390/electronics11244239" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> <a href="https://www.mdpi.com/2079-9292/11/24/4239" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a> </div> <div class="abstract hidden"> <p>A space-discretization-based optimal trajectory planning method for autonomous vehicles in narrow corridors, validated through simulations and field experiments.</p> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">xu2022space</span><span class="p">,</span>
+<span class="p">}</span></code></pre></figure> </div> </div> </div> </li> <li> <div class="row"> <div id="xu2022space" class="col-sm-10"> <div class="title">Space Discretization-Based Optimal Trajectory Planning for Automated Vehicles in Narrow Corridor Scenes</div> <div class="author"> Biao Xu, <em>Shijie Yuan</em>, Xuerong Lin, and <span class="more-authors" title="click to view 3 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '3 more authors' ? 'Manjiang Hu, Yougang Bian, Zhaobo Qin' : '3 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">3 more authors</span> </div> <div class="periodical"> <em>Electronics</em>, Dec 2022 </div> <div class="periodical"> </div> <div class="links"> <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a> <a href="https://doi.org/10.3390/electronics11244239" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> <a href="https://www.mdpi.com/2079-9292/11/24/4239" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a> </div> <div class="abstract hidden"> <p>Autonomous vehicles operating in narrow corridor scenarios face challenging motion planning problems with tight spatial constraints. This paper presents a space-discretization-based optimal trajectory planning method for automated vehicles in narrow corridors. The approach formulates the planning problem as a quadratic programming optimization that incorporates vehicle kinematic constraints, boundary constraints, comfort requirements, and driving efficiency objectives within a discretized space representation. The method generates smooth, dynamically feasible trajectories that safely navigate constrained environments while optimizing for passenger comfort and travel time. The proposed framework is validated through extensive simulations and real-world field experiments, demonstrating reliable trajectory generation in various narrow-corridor configurations.</p> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">xu2022space</span><span class="p">,</span>
   <span class="na">title</span> <span class="p">=</span> <span class="s">{Space Discretization-Based Optimal Trajectory Planning for Automated Vehicles in Narrow Corridor Scenes}</span><span class="p">,</span>
   <span class="na">author</span> <span class="p">=</span> <span class="s">{Xu, Biao and Yuan, Shijie and Lin, Xuerong and Hu, Manjiang and Bian, Yougang and Qin, Zhaobo}</span><span class="p">,</span>
   <span class="na">journal</span> <span class="p">=</span> <span class="s">{Electronics}</span><span class="p">,</span>
@@ -83,7 +199,7 @@
   <span class="na">month</span> <span class="p">=</span> <span class="nv">dec</span><span class="p">,</span>
   <span class="na">publisher</span> <span class="p">=</span> <span class="s">{MDPI}</span><span class="p">,</span>
   <span class="na">doi</span> <span class="p">=</span> <span class="s">{10.3390/electronics11244239}</span><span class="p">,</span>
-<span class="p">}</span></code></pre></figure> </div> </div> </div> </li> </ol> </div> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Shijie Yuan. © 2026 Shijie Yuan. Built with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="external nofollow noopener">al-folio</a> and hosted on <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Last updated: July 17, 2026. </div> </footer> <script>
+<span class="p">}</span></code></pre></figure> </div> </div> </div> </li> </ol> </div> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Shijie Yuan. © 2026 Shijie Yuan. Built with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="external nofollow noopener">al-folio</a> and hosted on <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Last updated: July 21, 2026. </div> </footer> <script>
   window.alFolio = {
     compatBootstrap: false
   };
@@ -115,7 +231,10 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "news-our-paper-on-optimal-trajectory-planning-in-narrow-corridors-was-published-in-electronics",
+        },{id: "news-received-my-b-e-in-vehicle-engineering-from-dalian-university-of-technology-with-the-honor-of-excellent-graduate",
+          title: 'Received my B.E. in Vehicle Engineering from Dalian University of Technology, with the...',
+          description: "",
+          section: "News",},{id: "news-our-paper-on-optimal-trajectory-planning-in-narrow-corridors-was-published-in-electronics",
           title: 'Our paper on optimal trajectory planning in narrow corridors was published in Electronics....',
           description: "",
           section: "News",},{id: "news-received-my-m-e-in-mechanical-engineering-from-hunan-university",
