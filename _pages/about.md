@@ -2,14 +2,20 @@
 layout: about
 title: about
 permalink: /
-subtitle: Autonomous Driving · Motion Planning · Safe Reinforcement Learning
+subtitle:
 
 profile:
-  align: right
+  align: left
   image: prof_pic.jpg
   image_circular: false
   more_info: >
-    <p><strong>Shanghai, China</strong></p>
+    <p class="profile-name">Shijie Yuan</p>
+    <p class="profile-location">Shanghai, China</p>
+    <div class="profile-social-links">
+      <a href="mailto:yuansj@hnu.edu.cn" title="Email"><i class="fa-solid fa-envelope"></i> yuansj@hnu.edu.cn</a>
+      <a href="https://github.com/wenqing-2021" title="GitHub"><i class="fa-brands fa-github"></i> GitHub</a>
+      <a href="https://scholar.google.com/citations?user=iLVzwyUAAAAJ&amp;hl=en" title="Google Scholar"><i class="ai ai-google-scholar"></i> Google Scholar</a>
+    </div>
 
 selected_papers: true
 social: false
@@ -17,71 +23,173 @@ social: false
 announcements:
   enabled: true
   scrollable: false
-  limit: 4
+  limit: 5
 
 latest_posts:
   enabled: false
 ---
 
 <style>
+  /* === Fonts === */
+  body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .post-title, .title, .navbar-brand,
+  .profile .name {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+  }
+
+  figcaption, .caption, .pub-meta, .news-date,
+  .profile-location, .more-info {
+    font-family: Georgia, Times, serif;
+  }
+
+  code, pre, kbd, samp,
+  .highlight, .code {
+    font-family: Monaco, Consolas, "Lucida Console", monospace;
+  }
+
+  /* === Fix bold text (overridden by theme) === */
+  strong, b {
+    font-weight: 600;
+  }
+
+  /* === Hide theme's top-level name & subtitle === */
+  .post-title,
+  .desc {
+    display: none;
+  }
+
+  .post-header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
   .profile {
-    width: 42%;
-    max-width: 180px;
+    width: 36%;
+    max-width: 130px;
+    margin-right: 3rem !important;
   }
 
   .profile .more-info {
-    text-align: center;
+    text-align: left;
     font-size: 0.78rem;
+    width: 100%;
+  }
+
+  .profile-name {
+    margin: 0.45rem 0 0.1rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    color: var(--global-text-color);
   }
 
   @media (min-width: 576px) {
     .profile {
-      width: 21%;
+      width: 18%;
     }
   }
 
-  .compact-social-links {
+  /* --- profile column gap to content --- */
+  .post-header + .row,
+  .about .row,
+  div:has(> .profile) {
+    gap: 3rem;
+  }
+
+  .profile-location {
+    margin: 0.15rem 0 1.2rem !important;
+    font-size: 0.8rem;
+    color: var(--global-text-color-light, #666);
+  }
+
+  .profile-social-links {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.1rem;
-    margin: 2rem 0 0.55rem;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin: 0;
   }
 
-  .compact-social-links a {
+  .profile-social-links a {
     color: var(--global-text-color);
-    font-size: 1.5rem;
-    line-height: 1;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
-  .compact-social-links a:hover {
+  .profile-social-links a i,
+  .profile-social-links a .ai {
+    font-size: 1rem;
+    width: 1.2rem;
+    text-align: center;
+  }
+
+  .profile-social-links a:hover {
     color: var(--global-theme-color);
     text-decoration: none;
   }
 
-  .compact-contact-note {
-    margin: 0;
-    text-align: center;
-    font-size: 0.8rem;
+  /* --- align news & publications with body text --- */
+  article > h2,
+  article > .news,
+  article > .publications {
+    margin-left: 11rem;
+  }
+
+  /* --- divider under section headings --- */
+  article > h2 {
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.35rem;
+    margin-bottom: 0.8rem;
+  }
+
+  /* --- capitalize "news", remove its link --- */
+  article > h2:first-of-type {
+    text-transform: capitalize;
+    font-weight: 300;
+  }
+  article > h2:first-of-type a {
+    pointer-events: none;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* --- rename "selected publications" → "Publications" --- */
+  article > h2:nth-of-type(2) {
+    font-weight: 300;
+  }
+  article > h2:nth-of-type(2) a {
+    font-size: 0;
+    pointer-events: none;
+  }
+  article > h2:nth-of-type(2) a::before {
+    content: "Publications";
+    font-size: 2rem;
+    color: var(--global-text-color);
   }
 </style>
 
-I am an autonomous driving algorithm engineer and researcher working at the intersection of **learning-based decision making**, **motion planning**, and **vehicle safety**. I received my M.E. in Mechanical Engineering from [Hunan University](https://www-en.hnu.edu.cn/) in 2024 and my B.E. in Vehicle Engineering from [Dalian University of Technology](https://en.dlut.edu.cn/) in 2021.
+<script>
+  /* --- reformat news dates to YYYY.MM.DD --- */
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('article .news th[scope="row"]').forEach(function (th) {
+      var txt = th.textContent.trim();
+      var d = new Date(txt);
+      if (!isNaN(d.getTime())) {
+        var y = d.getFullYear();
+        var m = String(d.getMonth() + 1).padStart(2, '0');
+        th.textContent = y + '.' + m;
+      }
+    });
+  });
+</script>
 
-My work focuses on turning advanced learning and optimization methods into safe, efficient driving behavior. I recently worked at **Li Auto** (2024–2026), developing learning-based path and trajectory planning modules for production autonomous driving systems. My academic research explores safe reinforcement learning, risk-aware planning, constrained optimization, and their applications to complex driving scenarios.
+I am an autonomous driving algorithm engineer currently **seeking Ph.D. opportunities**. I received my M.E. in Mechanical Engineering from [Hunan University](https://www-en.hnu.edu.cn/) in 2024 and my B.E. in Vehicle Engineering from [Dalian University of Technology](https://en.dlut.edu.cn/) in 2021.
 
-I enjoy building complete research systems—from problem formulation and algorithm design to simulation, evaluation, and open-source implementation. Selected code is available on [GitHub](https://github.com/wenqing-2021), and my publication record is listed on [Google Scholar](https://scholar.google.com/citations?user=iLVzwyUAAAAJ&hl=en).
-
-## Research highlights
-
-- **Production autonomous driving:** developed learning-based path, trajectory, and velocity planning methods deployed in real vehicles.
-- **Risk-aware planning:** combined Gaussian-process risk estimation, safe reinforcement learning, risk-reachable sets, and constrained iLQR for structured-road trajectory planning.
-- **Open-source motion planning:** built an automated valet parking framework integrating Hybrid A\*, path optimization, interpolation, velocity planning, and optimal control.
-- **Safe decision making:** studied constrained reinforcement learning and action shielding for highway on-ramp merging.
-
-<div class="compact-social-links" aria-label="Contact links">
-  <a href="mailto:yuansj@hnu.edu.cn" title="Email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-  <a href="https://github.com/wenqing-2021" title="GitHub" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-  <a href="https://scholar.google.com/citations?user=iLVzwyUAAAAJ&hl=en" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
-</div>
-<p class="compact-contact-note">The best way to reach me is by email.</p>
+At [Li Auto](https://www.liauto.com/) (2024–2026), I developed learning-based trajectory planning modules that have been deployed in millions of production vehicles. My research interests include **safe reinforcement learning**, **risk-aware motion planning**, and **constrained optimization** for complex driving scenarios. My long-term goal is to develop safe, intelligent, and trustworthy robotic systems that assist human beings, augment human capabilities, and improve quality of life.
