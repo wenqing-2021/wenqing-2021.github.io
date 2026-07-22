@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper on [preference-aware safe reinforcement learning for on-ramp merging](https://doi.org/10.3390/machines14060605) was published in *Machines*.
+Our paper on [preference-aware safe reinforcement learning for on-ramp merging](https://doi.org/10.3390/machines14060605) was published in _Machines_.

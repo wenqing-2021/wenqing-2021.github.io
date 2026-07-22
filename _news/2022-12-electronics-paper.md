@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper on [optimal trajectory planning in narrow corridors](https://doi.org/10.3390/electronics11244239) was published in *Electronics*.
+Our paper on [optimal trajectory planning in narrow corridors](https://doi.org/10.3390/electronics11244239) was published in _Electronics_.
