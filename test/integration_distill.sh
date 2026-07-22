@@ -4,11 +4,38 @@ set -euo pipefail
 tmp_dir="$(mktemp -d)"
 tmp_override="${tmp_dir}/distill-override.yml"
 tmp_site="${tmp_dir}/site"
+distill_fixture="_posts/2001-05-22-integration-distill.md"
 
 cleanup() {
+  rm -f "${distill_fixture}"
+  rmdir _posts 2>/dev/null || true
   rm -rf "${tmp_dir}"
 }
 trap cleanup EXIT
+
+mkdir -p _posts
+if [ -e "${distill_fixture}" ]; then
+  echo "distill integration fixture path already exists: ${distill_fixture}" >&2
+  exit 1
+fi
+
+cat >"${distill_fixture}" <<'MARKDOWN'
+---
+layout: distill
+title: Distill integration fixture
+description: A temporary fixture for the Distill integration test.
+date: 2001-05-22
+giscus_comments: true
+related_posts: false
+mermaid:
+  enabled: true
+tikzjax: true
+---
+
+## Integration fixture
+
+This temporary post exercises the Distill runtime integrations.
+MARKDOWN
 
 cat >"${tmp_override}" <<'YAML'
 giscus:
@@ -20,7 +47,7 @@ YAML
 
 bundle exec jekyll build --config "_config.yml,${tmp_override}" -d "${tmp_site}" >/dev/null
 
-distill_page="${tmp_site}/blog/2021/distill/index.html"
+distill_page="${tmp_site}/blog/2001/integration-distill/index.html"
 
 if [ ! -f "${distill_page}" ]; then
   echo "distill page was not generated at ${distill_page}" >&2
