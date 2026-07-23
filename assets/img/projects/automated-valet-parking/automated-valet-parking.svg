@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">Automated valet parking</title>
+  <desc id="desc">A planned vehicle path into a parking space.</desc>
+  <rect width="800" height="450" fill="#f8fbff"/>
+  <g stroke="#c8d8e8" stroke-width="5" fill="none">
+    <path d="M470 130 H745 V370 H470"/><path d="M470 210 H745"/><path d="M470 290 H745"/>
+  </g>
+  <path d="M82 342 C210 350 306 338 374 286 C435 239 438 190 533 168" fill="none" stroke="#0b5ed7" stroke-width="9" stroke-linecap="round" stroke-dasharray="16 13"/>
+  <path d="M515 151 L544 166 L520 187" fill="none" stroke="#0b5ed7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="translate(583 167)">
+    <rect x="-58" y="-27" width="116" height="54" rx="14" fill="#12345b"/>
+    <rect x="-28" y="-22" width="56" height="44" rx="7" fill="#9ed0ff"/>
+    <circle cx="-37" cy="30" r="8" fill="#202b38"/><circle cx="37" cy="30" r="8" fill="#202b38"/>
+  </g>
+  <circle cx="82" cy="342" r="13" fill="#ff9f1c"/>
+  <text x="54" y="70" fill="#12345b" font-family="Arial, sans-serif" font-size="34" font-weight="700">AUTOMATED PARKING</text>
+  <text x="56" y="108" fill="#54708f" font-family="Arial, sans-serif" font-size="20">Hybrid A* · Optimization · Optimal Control</text>
+</svg>

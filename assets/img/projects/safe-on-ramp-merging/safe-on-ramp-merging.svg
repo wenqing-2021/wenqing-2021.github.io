@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
+  <title id="title">Safe reinforcement learning for on-ramp merging</title>
+  <desc id="desc">An on-ramp trajectory safely merging into highway traffic.</desc>
+  <rect width="800" height="450" fill="#f8fbff"/>
+  <path d="M0 170 H800 M0 285 H800" stroke="#d9e5f3" stroke-width="90"/>
+  <path d="M0 170 H800 M0 285 H800" stroke="#ffffff" stroke-width="64"/>
+  <path d="M70 420 C250 415 280 330 365 285 C448 241 520 266 710 278" fill="none" stroke="#d9e5f3" stroke-width="82"/>
+  <path d="M70 420 C250 415 280 330 365 285 C448 241 520 266 710 278" fill="none" stroke="#ffffff" stroke-width="56"/>
+  <path d="M85 414 C250 405 285 328 373 285 C454 247 535 270 705 278" fill="none" stroke="#0b5ed7" stroke-width="9" stroke-linecap="round"/>
+  <g fill="#12345b">
+    <rect x="210" y="149" width="78" height="42" rx="10"/><rect x="470" y="149" width="78" height="42" rx="10"/><rect x="600" y="264" width="78" height="42" rx="10"/>
+  </g>
+  <g transform="translate(374 286) rotate(-24)"><rect x="-40" y="-21" width="80" height="42" rx="11" fill="#ff9f1c"/><rect x="-18" y="-16" width="36" height="32" rx="5" fill="#fff2d8"/></g>
+  <path d="M337 250 L374 220 L411 250" fill="none" stroke="#67a7f3" stroke-width="5"/><path d="M350 235 L374 216 L398 235" fill="none" stroke="#67a7f3" stroke-width="5"/>
+  <text x="54" y="70" fill="#12345b" font-family="Arial, sans-serif" font-size="34" font-weight="700">SAFE ON-RAMP MERGING</text>
+  <text x="56" y="108" fill="#54708f" font-family="Arial, sans-serif" font-size="20">Constrained RL · Action Shielding · MPC</text>
+</svg>
