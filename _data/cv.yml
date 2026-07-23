@@ -21,7 +21,7 @@ cv:
         end_date: 2024-06
         score: "GPA: 3.57/4.0"
         highlights:
-          - "Thesis: The Trajectory Planning Method Combining Reinforcement Learning and Risk-Reachable Sets"
+          - "Thesis: The Trajectory Planning Method for Intelligent Vehicles Using Reinforcement Learning and Risk-Reachable Sets"
           - "Research: risk-aware planning, deep reinforcement learning, and autonomous driving"
 
       - institution: Dalian University of Technology
@@ -70,7 +70,7 @@ cv:
           - Designed evaluation metrics and data-distribution analysis tools for model development.
 
     Research Projects:
-      - name: Risk-Reachable Set-based Motion Planning
+      - name: The Trajectory Planning Method for Intelligent Vehicles Using Reinforcement Learning and Risk-Reachable Sets
         start_date: 2023-11
         end_date: 2024-05
         summary: Master's thesis combining risk estimation, safe reinforcement learning, reachable sets, and constrained iLQR.

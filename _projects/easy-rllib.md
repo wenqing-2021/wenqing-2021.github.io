@@ -2,7 +2,7 @@
 layout: page
 title: EasyRLlib
 description: A compact PyTorch implementation of reinforcement learning and safe RL algorithms.
-img: assets/img/projects/easy-rllib.svg
+img: assets/img/projects/easy-rllib/easy-rllib.svg
 importance: 4
 category: open-source
 ---

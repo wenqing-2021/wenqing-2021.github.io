@@ -188,69 +188,60 @@ latest_posts:
     font-size: 0.9rem;
   }
 
-  /* --- compact, single-column project cards --- */
-  .home-projects .projects > .row {
-    margin-right: 0;
-    margin-left: 0;
-  }
-
-  .home-projects .projects .col {
-    flex: 0 0 100%;
-    max-width: 100%;
+  /* --- single-column project list: full covers on the left, title links on the right --- */
+  .project-list {
+    margin: 0;
     padding: 0;
-    margin-bottom: 1rem !important;
   }
 
-  .home-projects .card {
+  .project-list-item {
+    display: grid;
+    grid-template-columns: minmax(13rem, 16rem) minmax(0, 1fr);
+    gap: 1.4rem;
+    align-items: center;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--global-divider-color);
+  }
+
+  .project-list-item:first-child {
+    padding-top: 0;
+  }
+
+  .project-list-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    padding: 0.35rem;
     overflow: hidden;
     border: 1px solid var(--global-divider-color);
     border-radius: 0.5rem;
-    box-shadow: none;
+    background: var(--global-card-bg-color);
   }
 
-  .home-projects .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
-  }
-
-  .home-projects .card > .row {
-    height: 100%;
-    margin: 0;
-  }
-
-  .home-projects figure {
-    height: 100%;
-    margin: 0;
-  }
-
-  .home-projects .card-img {
+  .project-list-media img {
+    display: block;
     width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    padding-top: 0;
-    object-fit: cover;
-    border-radius: 0;
-  }
-
-  .home-projects .card-body {
-    display: flex;
     height: 100%;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1.1rem 1.25rem;
+    object-fit: contain;
   }
 
-  .home-projects .card-title {
-    margin-bottom: 0.45rem;
-    font-size: 1.05rem;
-    line-height: 1.3;
+  .project-list-title {
+    margin: 0;
+    font-size: 1.08rem;
+    font-weight: 500;
+    line-height: 1.4;
   }
 
-  .home-projects .card-text {
-    margin-bottom: 0;
-    color: var(--global-text-color-light, #666);
-    font-size: 0.9rem;
-    line-height: 1.45;
+  .project-list-title a {
+    color: var(--global-text-color);
+    text-decoration: none;
+  }
+
+  .project-list-title a:hover {
+    color: var(--global-theme-color);
+    text-decoration: underline;
   }
 
   .home-projects-link {
@@ -324,6 +315,15 @@ latest_posts:
   }
 
   @media (max-width: 575.98px) {
+    .project-list-item {
+      grid-template-columns: minmax(7.5rem, 9rem) minmax(0, 1fr);
+      gap: 0.9rem;
+    }
+
+    .project-list-title {
+      font-size: 1rem;
+    }
+
     .education-item {
       grid-template-columns: minmax(0, 1fr);
       row-gap: 0.1rem;
@@ -358,7 +358,7 @@ At [Li Auto](https://www.liauto.com/) (2024–2026), I developed learning-based 
       <div>
         <p class="education-school"><a href="https://www-en.hnu.edu.cn/">Hunan University</a></p>
         <p class="education-degree">M.E. in Mechanical Engineering · GPA: 3.57</p>
-        <p class="education-detail">Thesis: The Trajectory Planning Method Combining Reinforcement Learning and Risk-Reachable Sets</p>
+        <p class="education-detail">Thesis: The Trajectory Planning Method for Intelligent Vehicles Using Reinforcement Learning and Risk-Reachable Sets</p>
       </div>
     </div>
     <div class="education-item">
@@ -374,13 +374,16 @@ At [Li Auto](https://www.liauto.com/) (2024–2026), I developed learning-based 
 
 <section class="home-projects">
   <h2>Projects</h2>
-  <div class="projects">
-    {% assign sorted_projects = site.projects | sort: "importance" %}
-    <div class="row row-cols-1">
-      {% for project in sorted_projects %}
-        {% include projects_horizontal.liquid %}
-      {% endfor %}
-    </div>
+  {% assign sorted_projects = site.projects | sort: "importance" %}
+  <div class="project-list">
+    {% for project in sorted_projects %}
+      <article class="project-list-item">
+        <div class="project-list-media">
+          <img src="{{ project.img | prepend: '/' | relative_url }}" alt="{{ project.title }} project cover" loading="lazy">
+        </div>
+        <h3 class="project-list-title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+      </article>
+    {% endfor %}
   </div>
   <p class="home-projects-link"><a href="{{ '/projects/' | relative_url }}">View all projects →</a></p>
 </section>

@@ -2,7 +2,7 @@
 layout: page
 title: Safe RL for On-Ramp Merging
 description: Constraint-aware decision making with action shielding and model predictive control.
-img: assets/img/projects/safe-on-ramp-merging.svg
+img: assets/img/projects/safe-on-ramp-merging/safe-on-ramp-merging.svg
 importance: 3
 category: research
 related_publications: true
