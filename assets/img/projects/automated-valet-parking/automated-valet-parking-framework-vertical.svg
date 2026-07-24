@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1570" viewBox="0 0 1200 1570" role="img" aria-labelledby="title description">
+  <title id="title">Automated Valet Parking Planning Framework</title>
+  <desc id="description">A vertical three-stage framework for automated valet parking. Scenario modelling and a Hybrid A-star planning example feed quadratic-program path optimization, followed by speed planning and IPOPT-based nonlinear optimal control.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .title { fill: #102a43; font: 700 44px Georgia, 'Times New Roman', serif; }
+      .subtitle { fill: #52606d; font: 400 21px Arial, sans-serif; }
+      .stage-no { fill: #ffffff; font: 700 16px Arial, sans-serif; letter-spacing: 2px; }
+      .stage-title { fill: #ffffff; font: 700 29px Georgia, 'Times New Roman', serif; }
+      .card-title { fill: #102a43; font: 700 22px Arial, sans-serif; }
+      .body { fill: #334e68; font: 400 18px Arial, sans-serif; }
+      .body-strong { fill: #243b53; font: 700 18px Arial, sans-serif; }
+      .formula { fill: #243b53; font: italic 22px Georgia, 'Times New Roman', serif; }
+      .formula-compact { fill: #243b53; font: italic 18px Georgia, 'Times New Roman', serif; }
+      .output { fill: #102a43; font: 700 20px Arial, sans-serif; }
+      .chip { fill: #334e68; font: 700 15px Arial, sans-serif; }
+      .arrow-label { fill: #52606d; font: 700 14px Arial, sans-serif; letter-spacing: 1.5px; }
+    </style>
+    <filter id="shadow" x="-10%" y="-8%" width="120%" height="125%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#243b53" flood-opacity="0.14"/>
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#7b8fa3"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="1570"/>
+  <text class="title" x="60" y="74">Automated Valet Parking</text>
+  <text class="subtitle" x="60" y="112">Planning framework from parking scenario to dynamically feasible trajectory</text>
+  <line x1="60" y1="142" x2="1140" y2="142" stroke="#cbd5e1" stroke-width="2"/>
+
+  <!-- Stage 1 -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="180" width="1080" height="350" rx="18" fill="#ffffff" stroke="#b7cce5" stroke-width="2"/>
+    <rect x="60" y="180" width="1080" height="74" rx="18" fill="#0f4c81"/>
+    <rect x="60" y="234" width="1080" height="20" fill="#0f4c81"/>
+  </g>
+  <text class="stage-no" x="88" y="212">01</text>
+  <text class="stage-title" x="88" y="237">Scenario Modelling and Initial Path</text>
+
+  <rect x="88" y="282" width="440" height="160" rx="12" fill="#eef5fb"/>
+  <rect x="88" y="282" width="7" height="160" rx="3.5" fill="#3b82c4"/>
+  <text class="card-title" x="116" y="319">Parking scenario</text>
+  <text class="body" x="116" y="353">Obstacle polygons · vehicle geometry · safety margins</text>
+  <text class="body-strong" x="116" y="388">P<tspan baseline-shift="sub" font-size="13">start</tspan> = {x₀, y₀, θ₀}</text>
+  <text class="body-strong" x="116" y="421">P<tspan baseline-shift="sub" font-size="13">goal</tspan> = {x<tspan baseline-shift="sub" font-size="13">f</tspan>, y<tspan baseline-shift="sub" font-size="13">f</tspan>, θ<tspan baseline-shift="sub" font-size="13">f</tspan>}</text>
+
+  <path d="M548 362 H640" fill="none" stroke="#7b8fa3" stroke-width="3" marker-end="url(#arrow)"/>
+  <text class="arrow-label" x="593" y="337" text-anchor="middle">SEARCH</text>
+
+  <rect x="660" y="282" width="452" height="160" rx="12" fill="#f7faff" stroke="#d9e6f3" stroke-width="1.5"/>
+  <text class="card-title" x="688" y="319">Hybrid A* planner</text>
+  <rect x="688" y="337" width="396" height="78" rx="7" fill="#ffffff" stroke="#d9e6f3"/>
+  <image href="cases/Case1.png" x="688" y="337" width="396" height="78" preserveAspectRatio="xMidYMid slice"/>
+  <text class="body" x="688" y="436">Hybrid A* initial path and trajectory refinement example</text>
+
+  <rect x="88" y="456" width="1024" height="58" rx="11" fill="#e7f1fb"/>
+  <text class="output" x="116" y="491">Output:</text>
+  <text class="formula" x="222" y="492">{Ξ} = [x₀, y₀, θ₀, x₁, y₁, θ₁, …, x<tspan baseline-shift="sub" font-size="15">f</tspan>, y<tspan baseline-shift="sub" font-size="15">f</tspan>, θ<tspan baseline-shift="sub" font-size="15">f</tspan>]</text>
+
+  <path d="M600 530 V592" fill="none" stroke="#7b8fa3" stroke-width="3" marker-end="url(#arrow)"/>
+  <text class="arrow-label" x="626" y="569">ROUGH PATH</text>
+
+  <!-- Stage 2 -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="620" width="1080" height="340" rx="18" fill="#ffffff" stroke="#b8ddd7" stroke-width="2"/>
+    <rect x="60" y="620" width="1080" height="74" rx="18" fill="#0f766e"/>
+    <rect x="60" y="674" width="1080" height="20" fill="#0f766e"/>
+  </g>
+  <text class="stage-no" x="88" y="652">02</text>
+  <text class="stage-title" x="88" y="677">Path Optimization</text>
+
+  <rect x="88" y="722" width="440" height="156" rx="12" fill="#effaf7"/>
+  <rect x="88" y="722" width="7" height="156" rx="3.5" fill="#14b8a6"/>
+  <text class="card-title" x="116" y="759">Objective Function</text>
+  <text class="formula-compact" x="116" y="793">J(x) = wₛfₛ(x) + wₗfₗ(x) + wᵣfᵣ(x)</text>
+  <text class="body" x="116" y="827">Path smoothness · path length</text>
+  <text class="body" x="116" y="859">Deviation from the Hybrid A* initial path</text>
+
+  <rect x="660" y="722" width="452" height="156" rx="12" fill="#f5fbfa" stroke="#d4ebe7" stroke-width="1.5"/>
+  <text class="card-title" x="688" y="759">Constraint Function</text>
+  <text class="formula-compact" x="688" y="793">x₁ = x₁ʳ,  xₙ = xₙʳ</text>
+  <text class="formula-compact" x="688" y="826">lᵢ ≤ xᵢ ≤ uᵢ</text>
+  <text class="formula-compact" x="688" y="859">‖Δxᵢ₊₁ − Δxᵢ‖² ≤ (Δs)²κ²<tspan baseline-shift="sub" font-size="13">max</tspan></text>
+
+  <rect x="88" y="892" width="1024" height="52" rx="10" fill="#e5f4f1"/>
+  <text class="output" x="116" y="917">Quadratic Program:</text>
+  <text class="formula-compact" x="344" y="917">min ½xᵀHx + fᵀx  s.t.  A<tspan baseline-shift="sub" font-size="13">eq</tspan>x = b<tspan baseline-shift="sub" font-size="13">eq</tspan>,  Ax ≤ b,  L<tspan baseline-shift="sub" font-size="13">b</tspan> ≤ x ≤ U<tspan baseline-shift="sub" font-size="13">b</tspan></text>
+
+  <path d="M600 960 V1022" fill="none" stroke="#7b8fa3" stroke-width="3" marker-end="url(#arrow)"/>
+  <text class="arrow-label" x="626" y="999">REFERENCE CURVE</text>
+
+  <!-- Stage 3 -->
+  <g filter="url(#shadow)">
+    <rect x="60" y="1050" width="1080" height="420" rx="18" fill="#ffffff" stroke="#f2c990" stroke-width="2"/>
+    <rect x="60" y="1050" width="1080" height="74" rx="18" fill="#a44b13"/>
+    <rect x="60" y="1104" width="1080" height="20" fill="#a44b13"/>
+  </g>
+  <text class="stage-no" x="88" y="1082">03</text>
+  <text class="stage-title" x="88" y="1107">Speed Planning and Optimal Control</text>
+
+  <rect x="88" y="1152" width="440" height="184" rx="12" fill="#fff8ed"/>
+  <rect x="88" y="1152" width="7" height="184" rx="3.5" fill="#ef8d32"/>
+  <text class="card-title" x="116" y="1189">Speed planning</text>
+  <text class="body" x="116" y="1223">Time-optimal velocity profile along C(s)</text>
+  <text class="body" x="116" y="1255">Velocity and acceleration bounds</text>
+  <text class="formula" x="116" y="1287">∫₀ᵗᶠ v(t)dt = L</text>
+  <text class="body-strong" x="116" y="1319">Time parameterization z₀(t)</text>
+
+  <path d="M548 1244 H640" fill="none" stroke="#7b8fa3" stroke-width="3" marker-end="url(#arrow)"/>
+  <text class="arrow-label" x="593" y="1219" text-anchor="middle">REFINE</text>
+
+  <rect x="660" y="1152" width="452" height="184" rx="12" fill="#fffaf2" stroke="#f7dfbd" stroke-width="1.5"/>
+  <text class="card-title" x="688" y="1189">Nonlinear optimal control</text>
+  <text class="body" x="688" y="1223">Vehicle dynamics · corridor constraints</text>
+  <text class="body" x="688" y="1255">Terminal pose · control and state bounds</text>
+  <text class="formula" x="688" y="1287">min J(z, u)  subject to  ż = f(z, u)</text>
+  <rect x="952" y="1304" width="128" height="28" rx="14" fill="#a44b13"/>
+  <text x="982" y="1324" style="fill:#ffffff;font:700 14px Arial,sans-serif;letter-spacing:1px">IPOPT</text>
+
+  <rect x="88" y="1362" width="1024" height="78" rx="12" fill="#fff2df"/>
+  <text class="output" x="116" y="1394">Final output: dynamically feasible parking trajectory  z*(t)</text>
+  <text class="body" x="116" y="1423">position · heading · velocity · acceleration · steering · steering rate</text>
+</svg>
