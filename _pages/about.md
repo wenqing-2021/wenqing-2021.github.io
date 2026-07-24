@@ -188,60 +188,84 @@ latest_posts:
     font-size: 0.9rem;
   }
 
-  /* --- single-column project list: full covers on the left, title links on the right --- */
-  .project-list {
-    margin: 0;
-    padding: 0;
-  }
-
-  .project-list-item {
+  /* --- compact project cards --- */
+  .home-projects .project-cards {
     display: grid;
-    grid-template-columns: minmax(13rem, 16rem) minmax(0, 1fr);
-    gap: 1.4rem;
-    align-items: center;
-    padding: 1.1rem 0;
-    border-bottom: 1px solid var(--global-divider-color);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.15rem;
+    margin: 0;
   }
 
-  .project-list-item:first-child {
-    padding-top: 0;
+  .home-projects .project-card {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 0.65rem;
+    background: var(--global-card-bg-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .project-list-media {
+  .home-projects .project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.09);
+  }
+
+  .home-projects .project-card-media {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    aspect-ratio: 16 / 9;
-    padding: 0.35rem;
+    aspect-ratio: 4 / 3;
     overflow: hidden;
-    border: 1px solid var(--global-divider-color);
-    border-radius: 0.5rem;
-    background: var(--global-card-bg-color);
+    border-bottom: 1px solid var(--global-divider-color);
+    background: color-mix(in srgb, var(--global-theme-color) 4%, var(--global-card-bg-color));
   }
 
-  .project-list-media img {
+  .home-projects .project-card-media img {
     display: block;
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    cursor: zoom-in;
     object-fit: contain;
   }
 
-  .project-list-title {
-    margin: 0;
-    font-size: 1.08rem;
-    font-weight: 500;
-    line-height: 1.4;
-  }
 
-  .project-list-title a {
-    color: var(--global-text-color);
+  .home-projects .project-card-link {
+    display: block;
+    color: inherit;
     text-decoration: none;
   }
 
-  .project-list-title a:hover {
+  .home-projects .project-card-link:focus-visible {
+    outline: 2px solid var(--global-theme-color);
+    outline-offset: -3px;
+  }
+
+  .home-projects .project-card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 0.9rem 1rem 1rem;
+  }
+
+  .home-projects .project-card-title {
+    margin: 0 0 0.4rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.38;
+  }
+
+  .home-projects .project-card-link:hover .project-card-title {
     color: var(--global-theme-color);
-    text-decoration: underline;
+  }
+
+  .home-projects .project-card-description {
+    margin: 0;
+    color: var(--global-text-color-light);
+    font-size: 0.86rem;
+    line-height: 1.45;
   }
 
   .home-projects-link {
@@ -315,13 +339,9 @@ latest_posts:
   }
 
   @media (max-width: 575.98px) {
-    .project-list-item {
-      grid-template-columns: minmax(7.5rem, 9rem) minmax(0, 1fr);
-      gap: 0.9rem;
-    }
-
-    .project-list-title {
-      font-size: 1rem;
+    .home-projects .project-cards {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
     }
 
     .education-item {
@@ -375,13 +395,18 @@ At [Li Auto](https://www.liauto.com/) (2024–2026), I developed learning-based 
 <section class="home-projects">
   <h2>Projects</h2>
   {% assign sorted_projects = site.projects | sort: "importance" %}
-  <div class="project-list">
+  <div class="project-cards">
     {% for project in sorted_projects %}
-      <article class="project-list-item">
-        <div class="project-list-media">
-          <img src="{{ project.img | prepend: '/' | relative_url }}" alt="{{ project.title }} project cover" loading="lazy">
+      <article class="project-card">
+        <div class="project-card-media">
+          <img src="{{ project.img | prepend: '/' | relative_url }}" alt="{{ project.title }} project cover. Click to enlarge." data-zoomable loading="lazy">
         </div>
-        <h3 class="project-list-title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h3>
+        <a class="project-card-link" href="{{ project.url | relative_url }}" aria-label="Open project: {{ project.title }}">
+          <div class="project-card-body">
+            <h3 class="project-card-title">{{ project.title }}</h3>
+            <p class="project-card-description">{{ project.description }}</p>
+          </div>
+        </a>
       </article>
     {% endfor %}
   </div>

@@ -2,7 +2,7 @@
 layout: page
 title: The Trajectory Planning Method for Intelligent Vehicles Using Reinforcement Learning and Risk-Reachable Sets
 description: Safe RL and constrained optimization for structured-road trajectory planning.
-img: assets/img/projects/risk-reachable-motion-planning/risk-aware-traj-planning-PIC.png
+img: assets/img/projects/risk-reachable-motion-planning/risk_planing_PIC.png
 importance: 1
 category: research
 ---

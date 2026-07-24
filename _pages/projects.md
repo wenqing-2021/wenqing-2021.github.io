@@ -8,82 +8,106 @@ nav_order: 2
 ---
 
 <style>
-  .project-list {
-    margin: 0;
-    padding: 0;
-  }
-
-  .project-list-item {
+  .project-cards {
     display: grid;
-    grid-template-columns: minmax(13rem, 16rem) minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.4rem;
-    align-items: center;
-    padding: 1.1rem 0;
-    border-bottom: 1px solid var(--global-divider-color);
+    margin: 0;
   }
 
-  .project-list-item:first-child {
-    padding-top: 0;
-  }
-
-  .project-list-media {
+  .project-card {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    padding: 0.35rem;
+    min-width: 0;
+    flex-direction: column;
     overflow: hidden;
     border: 1px solid var(--global-divider-color);
-    border-radius: 0.5rem;
+    border-radius: 0.65rem;
     background: var(--global-card-bg-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
 
-  .project-list-media img {
-    display: block;
+  .project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.09);
+  }
+
+  .project-card-media {
+    display: flex;
     width: 100%;
-    height: 100%;
+    aspect-ratio: 4 / 3;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--global-divider-color);
+    background: color-mix(in srgb, var(--global-theme-color) 4%, var(--global-card-bg-color));
+  }
+
+  .project-card-media img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    cursor: zoom-in;
     object-fit: contain;
   }
 
-  .project-list-title {
-    margin: 0;
-    font-size: 1.08rem;
-    font-weight: 500;
-    line-height: 1.4;
-  }
-
-  .project-list-title a {
-    color: var(--global-text-color);
+  .project-card-link {
+    display: block;
+    color: inherit;
     text-decoration: none;
   }
 
-  .project-list-title a:hover {
+  .project-card-link:focus-visible {
+    outline: 2px solid var(--global-theme-color);
+    outline-offset: -3px;
+  }
+
+  .project-card-body {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1.1rem 1.1rem;
+  }
+
+  .project-card-title {
+    margin: 0 0 0.45rem;
+    font-size: 1.08rem;
+    font-weight: 500;
+    line-height: 1.38;
+  }
+
+  .project-card-link:hover .project-card-title {
     color: var(--global-theme-color);
-    text-decoration: underline;
+  }
+
+  .project-card-description {
+    margin: 0;
+    color: var(--global-text-color-light);
+    font-size: 0.9rem;
+    line-height: 1.48;
   }
 
   @media (max-width: 575.98px) {
-    .project-list-item {
-      grid-template-columns: minmax(7.5rem, 9rem) minmax(0, 1fr);
-      gap: 0.9rem;
-    }
-
-    .project-list-title {
-      font-size: 1rem;
+    .project-cards {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 1rem;
     }
   }
 </style>
 
 {% assign sorted_projects = site.projects | sort: "importance" %}
 
-<div class="project-list">
+<div class="project-cards">
   {% for project in sorted_projects %}
-    <article class="project-list-item">
-      <div class="project-list-media">
-        <img src="{{ project.img | prepend: '/' | relative_url }}" alt="{{ project.title }} project cover" loading="lazy">
+    <article class="project-card">
+      <div class="project-card-media">
+        <img src="{{ project.img | prepend: '/' | relative_url }}" alt="{{ project.title }} project cover. Click to enlarge." data-zoomable loading="lazy">
       </div>
-      <h2 class="project-list-title"><a href="{{ project.url | relative_url }}">{{ project.title }}</a></h2>
+      <a class="project-card-link" href="{{ project.url | relative_url }}" aria-label="Open project: {{ project.title }}">
+        <div class="project-card-body">
+          <h2 class="project-card-title">{{ project.title }}</h2>
+          <p class="project-card-description">{{ project.description }}</p>
+        </div>
+      </a>
     </article>
   {% endfor %}
 </div>
