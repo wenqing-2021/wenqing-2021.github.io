@@ -100,7 +100,12 @@ nav_order: 2
   {% for project in sorted_projects %}
     <article class="project-card">
       <div class="project-card-media">
-        <img src="{{ project.img | prepend: '/' | relative_url }}" alt="{{ project.title }} project cover. Click to enlarge." data-zoomable loading="lazy">
+        <img
+          src="{{ project.img | prepend: '/' | relative_url }}"
+          alt="{{ project.title }} project cover. Click to enlarge."
+          data-project-cover-zoom
+          loading="lazy"
+        >
       </div>
       <a class="project-card-link" href="{{ project.url | relative_url }}" aria-label="Open project: {{ project.title }}">
         <div class="project-card-body">
@@ -111,3 +116,5 @@ nav_order: 2
     </article>
   {% endfor %}
 </div>
+
+<script defer src="{{ '/assets/js/project-cover-zoom.js' | relative_url }}"></script>

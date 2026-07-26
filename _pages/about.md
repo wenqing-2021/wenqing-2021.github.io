@@ -399,7 +399,12 @@ At [Li Auto](https://www.liauto.com/) (2024–2026), I developed learning-based 
     {% for project in sorted_projects %}
       <article class="project-card">
         <div class="project-card-media">
-          <img src="{{ project.img | prepend: '/' | relative_url }}" alt="{{ project.title }} project cover. Click to enlarge." data-zoomable loading="lazy">
+          <img
+            src="{{ project.img | prepend: '/' | relative_url }}"
+            alt="{{ project.title }} project cover. Click to enlarge."
+            data-project-cover-zoom
+            loading="lazy"
+          >
         </div>
         <a class="project-card-link" href="{{ project.url | relative_url }}" aria-label="Open project: {{ project.title }}">
           <div class="project-card-body">
@@ -412,3 +417,5 @@ At [Li Auto](https://www.liauto.com/) (2024–2026), I developed learning-based 
   </div>
   <p class="home-projects-link"><a href="{{ '/projects/' | relative_url }}">View all projects →</a></p>
 </section>
+
+<script defer src="{{ '/assets/js/project-cover-zoom.js' | relative_url }}"></script>

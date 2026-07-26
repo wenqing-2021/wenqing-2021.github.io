@@ -2,7 +2,7 @@
 layout: page
 title: Automated Valet Parking
 description: Hybrid A* and optimization-based trajectory planning in narrow parking spaces.
-img: assets/img/projects/automated-valet-parking/automated-valet-parking.svg
+img: assets/img/projects/automated-valet-parking/automated_valet_parking_PIC.png
 importance: 2
 category: research
 ---
@@ -146,6 +146,10 @@ category: research
     object-fit: contain;
     transform: scale(1.5);
     transform-origin: center center;
+  }
+
+  .research-project .case-media figure:first-child .case-visual img {
+    transform: translateY(6%) scale(1.5);
   }
 
   .research-project .case-media figcaption {

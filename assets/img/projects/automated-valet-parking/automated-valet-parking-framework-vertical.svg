@@ -1,125 +1,287 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1570" viewBox="0 0 1200 1570" role="img" aria-labelledby="title description">
-  <title id="title">Automated Valet Parking Planning Framework</title>
-  <desc id="description">A vertical three-stage framework for automated valet parking. Scenario modelling and a Hybrid A-star planning example feed quadratic-program path optimization, followed by speed planning and IPOPT-based nonlinear optimal control.</desc>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Automated Valet Parking planner overview
+  Source-aligned with main.py, path_plan/hybrid_a_star.py, and path_plan/path_planner.py.
+  Canvas: 1080 × 1920 px (vertical poster)
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">Automated Valet Parking Planner</title>
+  <desc id="desc">A hierarchical planner that transforms a parking map, vehicle limits, and start-goal poses into an executable parking trajectory.</desc>
+
   <defs>
-    <style>
-      .bg { fill: #f8fafc; }
-      .title { fill: #102a43; font: 700 44px Georgia, 'Times New Roman', serif; }
-      .subtitle { fill: #52606d; font: 400 21px Arial, sans-serif; }
-      .stage-no { fill: #ffffff; font: 700 16px Arial, sans-serif; letter-spacing: 2px; }
-      .stage-title { fill: #ffffff; font: 700 29px Georgia, 'Times New Roman', serif; }
-      .card-title { fill: #102a43; font: 700 22px Arial, sans-serif; }
-      .body { fill: #334e68; font: 400 18px Arial, sans-serif; }
-      .body-strong { fill: #243b53; font: 700 18px Arial, sans-serif; }
-      .formula { fill: #243b53; font: italic 22px Georgia, 'Times New Roman', serif; }
-      .formula-compact { fill: #243b53; font: italic 18px Georgia, 'Times New Roman', serif; }
-      .output { fill: #102a43; font: 700 20px Arial, sans-serif; }
-      .chip { fill: #334e68; font: 700 15px Arial, sans-serif; }
-      .arrow-label { fill: #52606d; font: 700 14px Arial, sans-serif; letter-spacing: 1.5px; }
-    </style>
-    <filter id="shadow" x="-10%" y="-8%" width="120%" height="125%">
-      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#243b53" flood-opacity="0.14"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F7FAFF"/>
+      <stop offset="0.48" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F8FBFC"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#193A66"/>
+      <stop offset="1" stop-color="#0E6F78"/>
+    </linearGradient>
+    <linearGradient id="route" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38BDAE"/>
+      <stop offset="1" stop-color="#3C80E8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="9" stdDeviation="11" flood-color="#193A66" flood-opacity="0.11"/>
     </filter>
-    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
-      <path d="M0,0 L12,6 L0,12 Z" fill="#7b8fa3"/>
+    <filter id="small-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#16325C" flood-opacity="0.12"/>
+    </filter>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#DCE7ED" stroke-width="1"/>
+    </pattern>
+    <marker id="arrow-teal" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 1.5 1.5 L 10 6 L 1.5 10.5 Z" fill="#22A89A"/>
     </marker>
+    <marker id="arrow-navy" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M 1.5 1.5 L 10 6 L 1.5 10.5 Z" fill="#315B95"/>
+    </marker>
+    <style>
+      .sans { font-family: Inter, "Noto Sans SC", "Microsoft YaHei", "PingFang SC", Arial, sans-serif; }
+      .mono { font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; }
+      .eyebrow { font-size: 19px; font-weight: 700; letter-spacing: 3px; }
+      .title { font-size: 36px; font-weight: 800; letter-spacing: 0; }
+      .subtitle { font-size: 20px; font-weight: 400; }
+      .section { font-size: 15px; font-weight: 800; letter-spacing: 2.2px; }
+      .card-title { font-size: 24px; font-weight: 800; }
+      .card-subtitle { font-size: 16px; font-weight: 500; }
+      .label { font-size: 15px; font-weight: 700; }
+      .body { font-size: 15px; font-weight: 400; }
+      .small { font-size: 13px; font-weight: 500; }
+      .tiny { font-size: 11px; font-weight: 600; }
+      .formula { font-size: 15px; font-weight: 700; }
+    </style>
   </defs>
 
-  <rect class="bg" width="1200" height="1570"/>
-  <text class="title" x="60" y="74">Automated Valet Parking</text>
-  <text class="subtitle" x="60" y="112">Planning framework from parking scenario to dynamically feasible trajectory</text>
-  <line x1="60" y1="142" x2="1140" y2="142" stroke="#cbd5e1" stroke-width="2"/>
+  <!-- Background and outer frame -->
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+  <rect x="26" y="26" width="1028" height="1868" rx="30" fill="none" stroke="#E1EAF2" stroke-width="2"/>
 
-  <!-- Stage 1 -->
-  <g filter="url(#shadow)">
-    <rect x="60" y="180" width="1080" height="350" rx="18" fill="#ffffff" stroke="#b7cce5" stroke-width="2"/>
-    <rect x="60" y="180" width="1080" height="74" rx="18" fill="#0f4c81"/>
-    <rect x="60" y="234" width="1080" height="20" fill="#0f4c81"/>
+  <!-- Header -->
+  <g class="sans">
+    <rect x="72" y="70" width="178" height="34" rx="17" fill="#E2F7F3"/>
+    <circle cx="94" cy="87" r="5" fill="#18A590"/>
+    <text x="109" y="93" class="eyebrow" fill="#197565">AUTONOMOUS PARKING</text>
+    <text x="72" y="174" class="title" fill="#143158">Automated Valet Parking Planner</text>
+    <text x="72" y="214" class="subtitle" fill="#55708D">From a feasible geometric path to a trackable trajectory</text>
+
+    <g transform="translate(751 75)">
+      <rect width="257" height="114" rx="20" fill="#EEF5FF" stroke="#D5E3FA" stroke-width="2"/>
+      <path d="M30 75 C63 31 92 98 130 50 S198 68 226 34" fill="none" stroke="url(#route)" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="30" cy="75" r="8" fill="#FFFFFF" stroke="#25AA9A" stroke-width="4"/>
+      <path d="M226 24 l13 10 -13 10 z" fill="#3C80E8"/>
+      <text x="29" y="100" class="small" fill="#45617F">START</text>
+      <text x="183" y="100" class="small" fill="#45617F">GOAL</text>
+    </g>
   </g>
-  <text class="stage-no" x="88" y="212">01</text>
-  <text class="stage-title" x="88" y="237">Scenario Modelling and Initial Path</text>
 
-  <rect x="88" y="282" width="440" height="160" rx="12" fill="#eef5fb"/>
-  <rect x="88" y="282" width="7" height="160" rx="3.5" fill="#3b82c4"/>
-  <text class="card-title" x="116" y="319">Parking scenario</text>
-  <text class="body" x="116" y="353">Obstacle polygons · vehicle geometry · safety margins</text>
-  <text class="body-strong" x="116" y="388">P<tspan baseline-shift="sub" font-size="13">start</tspan> = {x₀, y₀, θ₀}</text>
-  <text class="body-strong" x="116" y="421">P<tspan baseline-shift="sub" font-size="13">goal</tspan> = {x<tspan baseline-shift="sub" font-size="13">f</tspan>, y<tspan baseline-shift="sub" font-size="13">f</tspan>, θ<tspan baseline-shift="sub" font-size="13">f</tspan>}</text>
-
-  <path d="M548 362 H640" fill="none" stroke="#7b8fa3" stroke-width="3" marker-end="url(#arrow)"/>
-  <text class="arrow-label" x="593" y="337" text-anchor="middle">SEARCH</text>
-
-  <rect x="660" y="282" width="452" height="160" rx="12" fill="#f7faff" stroke="#d9e6f3" stroke-width="1.5"/>
-  <text class="card-title" x="688" y="319">Hybrid A* planner</text>
-  <rect x="688" y="337" width="396" height="78" rx="7" fill="#ffffff" stroke="#d9e6f3"/>
-  <image href="cases/Case1.png" x="688" y="337" width="396" height="78" preserveAspectRatio="xMidYMid slice"/>
-  <text class="body" x="688" y="436">Hybrid A* initial path and trajectory refinement example</text>
-
-  <rect x="88" y="456" width="1024" height="58" rx="11" fill="#e7f1fb"/>
-  <text class="output" x="116" y="491">Output:</text>
-  <text class="formula" x="222" y="492">{Ξ} = [x₀, y₀, θ₀, x₁, y₁, θ₁, …, x<tspan baseline-shift="sub" font-size="15">f</tspan>, y<tspan baseline-shift="sub" font-size="15">f</tspan>, θ<tspan baseline-shift="sub" font-size="15">f</tspan>]</text>
-
-  <path d="M600 530 V592" fill="none" stroke="#7b8fa3" stroke-width="3" marker-end="url(#arrow)"/>
-  <text class="arrow-label" x="626" y="569">ROUGH PATH</text>
-
-  <!-- Stage 2 -->
-  <g filter="url(#shadow)">
-    <rect x="60" y="620" width="1080" height="340" rx="18" fill="#ffffff" stroke="#b8ddd7" stroke-width="2"/>
-    <rect x="60" y="620" width="1080" height="74" rx="18" fill="#0f766e"/>
-    <rect x="60" y="674" width="1080" height="20" fill="#0f766e"/>
+  <!-- Top input ribbon -->
+  <g class="sans">
+    <rect x="72" y="254" width="936" height="90" rx="20" fill="#FFFFFF" stroke="#DCE7F1" stroke-width="2" filter="url(#small-shadow)"/>
+    <g transform="translate(104 276)">
+      <circle cx="14" cy="14" r="14" fill="#DDF5F0"/>
+      <path d="M8 17 L13 8 L20 17 Z" fill="none" stroke="#168F80" stroke-width="2" stroke-linejoin="round"/>
+      <text x="38" y="10" class="label" fill="#1E3F62">Environment Map</text>
+      <text x="38" y="31" class="small" fill="#66819B">obstacles &amp; grid</text>
+    </g>
+    <path d="M322 278 V320" stroke="#D7E2EB" stroke-width="2"/>
+    <g transform="translate(354 276)">
+      <circle cx="14" cy="14" r="14" fill="#E7EEFF"/>
+      <path d="M7 21 L14 7 L21 21 M10 16 H18" fill="none" stroke="#4268C7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="38" y="10" class="label" fill="#1E3F62">Start / Goal</text>
+      <text x="38" y="31" class="small" fill="#66819B">x · y · heading θ</text>
+    </g>
+    <path d="M608 278 V320" stroke="#D7E2EB" stroke-width="2"/>
+    <g transform="translate(640 276)">
+      <circle cx="14" cy="14" r="14" fill="#FFF0DD"/>
+      <rect x="6" y="10" width="16" height="10" rx="3" fill="none" stroke="#C77717" stroke-width="2"/>
+      <circle cx="10" cy="22" r="2" fill="#C77717"/><circle cx="19" cy="22" r="2" fill="#C77717"/>
+      <text x="38" y="10" class="label" fill="#1E3F62">Vehicle Limits</text>
+      <text x="38" y="31" class="small" fill="#66819B">wheelbase · steering · v</text>
+    </g>
+    <path d="M865 278 V320" stroke="#D7E2EB" stroke-width="2"/>
+    <text x="897" y="288" class="label" fill="#1E3F62">Config</text>
+    <text x="897" y="313" class="small" fill="#66819B">YAML</text>
   </g>
-  <text class="stage-no" x="88" y="652">02</text>
-  <text class="stage-title" x="88" y="677">Path Optimization</text>
 
-  <rect x="88" y="722" width="440" height="156" rx="12" fill="#effaf7"/>
-  <rect x="88" y="722" width="7" height="156" rx="3.5" fill="#14b8a6"/>
-  <text class="card-title" x="116" y="759">Objective Function</text>
-  <text class="formula-compact" x="116" y="793">J(x) = wₛfₛ(x) + wₗfₗ(x) + wᵣfᵣ(x)</text>
-  <text class="body" x="116" y="827">Path smoothness · path length</text>
-  <text class="body" x="116" y="859">Deviation from the Hybrid A* initial path</text>
+  <!-- connector -->
+  <path d="M540 344 V382" fill="none" stroke="#22A89A" stroke-width="3" marker-end="url(#arrow-teal)"/>
 
-  <rect x="660" y="722" width="452" height="156" rx="12" fill="#f5fbfa" stroke="#d4ebe7" stroke-width="1.5"/>
-  <text class="card-title" x="688" y="759">Constraint Function</text>
-  <text class="formula-compact" x="688" y="793">x₁ = x₁ʳ,  xₙ = xₙʳ</text>
-  <text class="formula-compact" x="688" y="826">lᵢ ≤ xᵢ ≤ uᵢ</text>
-  <text class="formula-compact" x="688" y="859">‖Δxᵢ₊₁ − Δxᵢ‖² ≤ (Δs)²κ²<tspan baseline-shift="sub" font-size="13">max</tspan></text>
+  <!-- Hybrid A* hero card -->
+  <g class="sans">
+    <rect x="72" y="402" width="936" height="768" rx="28" fill="#FFFFFF" stroke="#D8E5ED" stroke-width="2" filter="url(#shadow)"/>
+    <path d="M72 430 Q72 402 100 402 H980 Q1008 402 1008 430 V508 H72 Z" fill="url(#hero)"/>
+    <text x="112" y="455" class="section" fill="#A5E9DE">STAGE 01 · FEASIBLE PATH</text>
+    <text x="112" y="493" class="card-title" fill="#FFFFFF">Hybrid A* Search: Collision-Free Geometric Path</text>
+    <rect x="833" y="435" width="130" height="38" rx="19" fill="#FFFFFF" fill-opacity="0.15" stroke="#FFFFFF" stroke-opacity="0.35"/>
+    <text x="857" y="460" class="label" fill="#FFFFFF">Core Planner</text>
 
-  <rect x="88" y="892" width="1024" height="52" rx="10" fill="#e5f4f1"/>
-  <text class="output" x="116" y="917">Quadratic Program:</text>
-  <text class="formula-compact" x="344" y="917">min ½xᵀHx + fᵀx  s.t.  A<tspan baseline-shift="sub" font-size="13">eq</tspan>x = b<tspan baseline-shift="sub" font-size="13">eq</tspan>,  Ax ≤ b,  L<tspan baseline-shift="sub" font-size="13">b</tspan> ≤ x ≤ U<tspan baseline-shift="sub" font-size="13">b</tspan></text>
+    <!-- mini parking map -->
+    <g transform="translate(112 539)">
+      <rect width="350" height="232" rx="16" fill="#F4F9FB" stroke="#D7E5EA" stroke-width="2"/>
+      <rect x="14" y="14" width="322" height="204" rx="10" fill="url(#grid)"/>
+      <rect x="48" y="44" width="81" height="42" rx="5" fill="#61758B"/>
+      <rect x="216" y="34" width="78" height="57" rx="5" fill="#61758B"/>
+      <rect x="184" y="144" width="116" height="35" rx="5" fill="#61758B"/>
+      <rect x="44" y="150" width="64" height="42" rx="5" fill="#61758B"/>
+      <path d="M76 121 C105 117 130 125 149 137 C172 151 168 112 192 108 C222 103 231 131 248 133 C271 135 286 121 309 108" fill="none" stroke="#A9BFD0" stroke-width="4" stroke-dasharray="6 7" stroke-linecap="round"/>
+      <path d="M76 121 C108 117 123 125 148 137 C170 150 175 111 195 108 C219 104 228 130 248 133 C273 137 286 122 309 108" fill="none" stroke="url(#route)" stroke-width="7" stroke-linecap="round"/>
+      <circle cx="76" cy="121" r="9" fill="#FFFFFF" stroke="#22A89A" stroke-width="5"/>
+      <circle cx="309" cy="108" r="10" fill="#3C80E8"/>
+      <path d="M304 99 L319 108 L304 117 Z" fill="#FFFFFF"/>
+      <text x="35" y="30" class="tiny" fill="#66809A">PARKING MAP</text>
+      <text x="58" y="216" class="tiny" fill="#168F80">START</text>
+      <text x="292" y="98" class="tiny" fill="#326ABD">GOAL</text>
+    </g>
 
-  <path d="M600 960 V1022" fill="none" stroke="#7b8fa3" stroke-width="3" marker-end="url(#arrow)"/>
-  <text class="arrow-label" x="626" y="999">REFERENCE CURVE</text>
+    <!-- Core algorithm phases -->
+    <g transform="translate(496 537)">
+      <text x="0" y="0" class="section" fill="#53718E">POP THE LOWEST-COST NODE</text>
 
-  <!-- Stage 3 -->
-  <g filter="url(#shadow)">
-    <rect x="60" y="1050" width="1080" height="420" rx="18" fill="#ffffff" stroke="#f2c990" stroke-width="2"/>
-    <rect x="60" y="1050" width="1080" height="74" rx="18" fill="#a44b13"/>
-    <rect x="60" y="1104" width="1080" height="20" fill="#a44b13"/>
+      <rect x="0" y="23" width="466" height="82" rx="15" fill="#F5F8FF" stroke="#D8E4F8" stroke-width="2"/>
+      <circle cx="32" cy="64" r="20" fill="#DDE8FF"/>
+      <text x="24" y="70" class="label" fill="#4268C7">1</text>
+      <text x="67" y="55" class="label" fill="#1A395D">Discretize Controls</text>
+      <text x="67" y="80" class="body" fill="#5D7691">5 steering angles × F/R → 10 successors</text>
+
+      <path d="M233 105 V128" stroke="#7C9BB8" stroke-width="2.5" marker-end="url(#arrow-navy)"/>
+
+      <rect x="0" y="143" width="466" height="82" rx="15" fill="#F1FAF8" stroke="#D5EEE9" stroke-width="2"/>
+      <circle cx="32" cy="184" r="20" fill="#D8F2ED"/>
+      <text x="24" y="190" class="label" fill="#168F80">2</text>
+      <text x="67" y="175" class="label" fill="#1A395D">Propagate &amp; Validate</text>
+      <text x="67" y="200" class="body" fill="#5D7691">Bicycle model; check vehicle clearance every 0.2 s</text>
+
+      <path d="M233 225 V248" stroke="#7C9BB8" stroke-width="2.5" marker-end="url(#arrow-navy)"/>
+
+      <rect x="0" y="263" width="466" height="82" rx="15" fill="#FFF8EE" stroke="#F6E3C5" stroke-width="2"/>
+      <circle cx="32" cy="304" r="20" fill="#FDEACA"/>
+      <text x="24" y="310" class="label" fill="#C77717">3</text>
+      <text x="67" y="295" class="label" fill="#1A395D">Cost &amp; Heuristic</text>
+      <text x="67" y="320" class="body" fill="#5D7691">Penalize gear / heading; favor low-cost nodes.</text>
+    </g>
+
+    <!-- equations band -->
+    <g transform="translate(112 904)">
+      <rect width="855" height="91" rx="16" fill="#F8FBFD" stroke="#E2EBF0" stroke-width="2"/>
+      <text x="29" y="18" class="tiny" fill="#6C849A">BICYCLE MODEL</text>
+      <foreignObject x="29" y="24" width="382" height="65">
+        <div xmlns="http://www.w3.org/1999/xhtml" style="margin:0; color:#173B62; font-family:'Cambria Math','STIX Two Math',serif; font-size:15px; font-weight:600; line-height:1;">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+            <mtable columnalign="left" rowspacing="0.05em">
+              <mtr><mtd><mrow><mover accent="false"><mi>x</mi><mo stretchy="false">˙</mo></mover><mo>=</mo><mi>v</mi><mo>·</mo><mi mathvariant="normal">cos</mi><mo>⁡</mo><mi>θ</mi></mrow></mtd></mtr>
+              <mtr><mtd><mrow><mover accent="false"><mi>y</mi><mo stretchy="false">˙</mo></mover><mo>=</mo><mi>v</mi><mo>·</mo><mi mathvariant="normal">sin</mi><mo>⁡</mo><mi>θ</mi></mrow></mtd></mtr>
+              <mtr><mtd><mrow><mover accent="false"><mi>θ</mi><mo stretchy="false">˙</mo></mover><mo>=</mo><mfrac><mi>v</mi><mi>L</mi></mfrac><mo>·</mo><mi mathvariant="normal">tan</mi><mo>⁡</mo><mi>δ</mi></mrow></mtd></mtr>
+            </mtable>
+          </math>
+        </div>
+      </foreignObject>
+      <path d="M431 18 V73" stroke="#D7E2EB" stroke-width="2"/>
+      <text x="461" y="21" class="tiny" fill="#6C849A">HEURISTIC</text>
+      <foreignObject x="461" y="37" width="360" height="42">
+        <div xmlns="http://www.w3.org/1999/xhtml" style="margin:0; color:#173B62; font-family:'Cambria Math','STIX Two Math',serif; font-size:18px; font-weight:600; line-height:1.1;">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>h</mi><mo>=</mo><mi mathvariant="normal">max</mi><mo>{</mo><msub><mi>d</mi><mtext>Dijkstra</mtext></msub><mo>,</mo><msub><mi>L</mi><mtext>RS</mtext></msub><mo>}</mo></mrow></math>
+        </div>
+      </foreignObject>
+    </g>
+
+    <!-- Goal connection decision -->
+    <g transform="translate(112 1019)">
+      <rect width="855" height="130" rx="18" fill="#EAF8F5" stroke="#C9EDE5" stroke-width="2"/>
+      <circle cx="43" cy="65" r="25" fill="#C8EDE5"/>
+      <path d="M34 65 l7 7 14 -17" fill="none" stroke="#148D7C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="88" y="45" class="label" fill="#176858">Near the goal, attempt a direct connection</text>
+      <text x="88" y="72" class="body" fill="#41756D">Generate a Reeds–Shepp curve, then collision-check every sample.</text>
+      <rect x="88" y="86" width="183" height="27" rx="13.5" fill="#FFFFFF" stroke="#BFE6DD"/>
+      <text x="106" y="105" class="tiny" fill="#267B6D">collision-free: success</text>
+      <path d="M289 100 H332" stroke="#76BAAE" stroke-width="2" marker-end="url(#arrow-teal)"/>
+      <rect x="347" y="86" width="224" height="27" rx="13.5" fill="#FFFFFF" stroke="#BFE6DD"/>
+      <text x="367" y="105" class="tiny" fill="#267B6D">in collision: expand again</text>
+    </g>
   </g>
-  <text class="stage-no" x="88" y="1082">03</text>
-  <text class="stage-title" x="88" y="1107">Speed Planning and Optimal Control</text>
 
-  <rect x="88" y="1152" width="440" height="184" rx="12" fill="#fff8ed"/>
-  <rect x="88" y="1152" width="7" height="184" rx="3.5" fill="#ef8d32"/>
-  <text class="card-title" x="116" y="1189">Speed planning</text>
-  <text class="body" x="116" y="1223">Time-optimal velocity profile along C(s)</text>
-  <text class="body" x="116" y="1255">Velocity and acceleration bounds</text>
-  <text class="formula" x="116" y="1287">∫₀ᵗᶠ v(t)dt = L</text>
-  <text class="body-strong" x="116" y="1319">Time parameterization z₀(t)</text>
+  <!-- connector -->
+  <path d="M540 1170 V1203" fill="none" stroke="#22A89A" stroke-width="3" marker-end="url(#arrow-teal)"/>
 
-  <path d="M548 1244 H640" fill="none" stroke="#7b8fa3" stroke-width="3" marker-end="url(#arrow)"/>
-  <text class="arrow-label" x="593" y="1219" text-anchor="middle">REFINE</text>
+  <!-- Refinement section -->
+  <g class="sans">
+    <text x="72" y="1243" class="section" fill="#248B7E">STAGE 02 · TRAJECTORY REFINEMENT</text>
+    <text x="72" y="1283" class="card-title" fill="#173B62">Segmented Refinement: A Trackable Trajectory</text>
+    <text x="72" y="1311" class="card-subtitle" fill="#66819A">Split at every gear change; refine each segment through four steps</text>
 
-  <rect x="660" y="1152" width="452" height="184" rx="12" fill="#fffaf2" stroke="#f7dfbd" stroke-width="1.5"/>
-  <text class="card-title" x="688" y="1189">Nonlinear optimal control</text>
-  <text class="body" x="688" y="1223">Vehicle dynamics · corridor constraints</text>
-  <text class="body" x="688" y="1255">Terminal pose · control and state bounds</text>
-  <text class="formula" x="688" y="1287">min J(z, u)  subject to  ż = f(z, u)</text>
-  <rect x="952" y="1304" width="128" height="28" rx="14" fill="#a44b13"/>
-  <text x="982" y="1324" style="fill:#ffffff;font:700 14px Arial,sans-serif;letter-spacing:1px">IPOPT</text>
+    <!-- vertical spine -->
+    <path d="M136 1368 V1787" fill="none" stroke="#B8D9D3" stroke-width="4" stroke-linecap="round"/>
 
-  <rect x="88" y="1362" width="1024" height="78" rx="12" fill="#fff2df"/>
-  <text class="output" x="116" y="1394">Final output: dynamically feasible parking trajectory  z*(t)</text>
-  <text class="body" x="116" y="1423">position · heading · velocity · acceleration · steering · steering rate</text>
+    <!-- 1 QP -->
+    <g transform="translate(72 1339)">
+      <rect x="0" y="0" width="936" height="104" rx="20" fill="#FFFFFF" stroke="#D9E8E8" stroke-width="2" filter="url(#small-shadow)"/>
+      <circle cx="64" cy="52" r="31" fill="#DDF4F0" stroke="#B7E7DD" stroke-width="2"/>
+      <text x="55" y="60" class="card-title" fill="#168F80">1</text>
+      <text x="126" y="39" class="card-title" fill="#173B62">QP Path Smoothing</text>
+      <foreignObject x="500" y="14" width="240" height="36">
+        <div xmlns="http://www.w3.org/1999/xhtml" style="margin:0; color:#167D72; font-family:'Cambria Math','STIX Two Math',serif; font-size:15px; font-weight:600; line-height:1.1;">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi mathvariant="normal">min</mi><mi>X</mi></msub><mspace width="0.35em"/><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mi>X</mi><mi>T</mi></msup><mi>P</mi><mi>X</mi><mo>+</mo><msup><mi>q</mi><mi>T</mi></msup><mi>X</mi></mrow></math>
+        </div>
+      </foreignObject>
+      <text x="126" y="66" class="body" fill="#56718B">Smooth the seed path under endpoint, clearance, and curvature constraints.</text>
+      <rect x="774" y="33" width="120" height="37" rx="18.5" fill="#EAF8F5"/>
+      <text x="799" y="57" class="label" fill="#168F80">Feasible</text>
+    </g>
+
+    <!-- 2 spline -->
+    <g transform="translate(72 1461)">
+      <rect x="0" y="0" width="936" height="104" rx="20" fill="#FFFFFF" stroke="#DAE4F5" stroke-width="2" filter="url(#small-shadow)"/>
+      <circle cx="64" cy="52" r="31" fill="#E8EEFF" stroke="#C9D8FA" stroke-width="2"/>
+      <text x="55" y="60" class="card-title" fill="#4268C7">2</text>
+      <text x="126" y="39" class="card-title" fill="#173B62">Cubic Spline &amp; Interpolation</text>
+      <text x="126" y="66" class="body" fill="#56718B">Fit by arc length to create a continuous, densely sampled reference trajectory.</text>
+      <rect x="774" y="33" width="120" height="37" rx="18.5" fill="#EEF3FF"/>
+      <text x="799" y="57" class="label" fill="#4268C7">Continuous</text>
+    </g>
+
+    <!-- 3 velocity -->
+    <g transform="translate(72 1583)">
+      <rect x="0" y="0" width="936" height="104" rx="20" fill="#FFFFFF" stroke="#F1E4CF" stroke-width="2" filter="url(#small-shadow)"/>
+      <circle cx="64" cy="52" r="31" fill="#FFF1D9" stroke="#F8D9A8" stroke-width="2"/>
+      <text x="55" y="60" class="card-title" fill="#C77717">3</text>
+      <text x="126" y="39" class="card-title" fill="#173B62">Speed Profile · NLP (SLSQP)</text>
+      <foreignObject x="530" y="14" width="185" height="36">
+        <div xmlns="http://www.w3.org/1999/xhtml" style="margin:0; color:#BA700E; font-family:'Cambria Math','STIX Two Math',serif; font-size:15px; font-weight:600; line-height:1.1;">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>v</mi><mo>(</mo><mi>t</mi><mo>)</mo><mo>=</mo><mi>A</mi><mi mathvariant="normal">sin</mi><mo>⁡</mo><mo>(</mo><mi>ω</mi><mi>t</mi><mo>)</mo></mrow></math>
+        </div>
+      </foreignObject>
+      <text x="126" y="66" class="body" fill="#56718B">Minimize travel time subject to sinusoidal speed, velocity, and acceleration limits.</text>
+      <rect x="774" y="33" width="120" height="37" rx="18.5" fill="#FFF6E9"/>
+      <text x="799" y="57" class="label" fill="#B76A0D">Time optimal</text>
+    </g>
+
+    <!-- 4 ocp -->
+    <g transform="translate(72 1705)">
+      <rect x="0" y="0" width="936" height="104" rx="20" fill="#FFFFFF" stroke="#E5DDF2" stroke-width="2" filter="url(#small-shadow)"/>
+      <circle cx="64" cy="52" r="31" fill="#F0EAFE" stroke="#DCD0F5" stroke-width="2"/>
+      <text x="55" y="60" class="card-title" fill="#7659B7">4</text>
+      <text x="126" y="39" class="card-title" fill="#173B62">Optimal Control · OCP (IPOPT)</text>
+      <foreignObject x="560" y="14" width="185" height="36">
+        <div xmlns="http://www.w3.org/1999/xhtml" style="margin:0; color:#7659B7; font-family:'Cambria Math','STIX Two Math',serif; font-size:15px; font-weight:600; line-height:1.1;">
+          <math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msup><mi>X</mi><mo>*</mo></msup><mo>=</mo><msub><mi mathvariant="normal">argmin</mi><mrow><mi>X</mi><mo>,</mo><mi>ξ</mi></mrow></msub><mi>J</mi><mo>(</mo><mi>X</mi><mo>,</mo><mi>ξ</mi><mo>)</mo></mrow></math>
+        </div>
+      </foreignObject>
+      <text x="126" y="66" class="body" fill="#56718B">Jointly refine steering, steering rate, acceleration, speed, and total time.</text>
+      <rect x="774" y="33" width="120" height="37" rx="18.5" fill="#F5F0FF"/>
+      <text x="796" y="57" class="label" fill="#7659B7">Executable</text>
+    </g>
+  </g>
+
+  <!-- Output footer -->
+  <g class="sans">
+    <path d="M540 1809 V1838" fill="none" stroke="#22A89A" stroke-width="3" marker-end="url(#arrow-teal)"/>
+    <rect x="72" y="1854" width="936" height="1" fill="#DCE7EF"/>
+    <text x="72" y="1883" class="small" fill="#6A8297">OUTPUT</text>
+    <text x="154" y="1883" class="label" fill="#173B62">Trajectory CSV</text>
+    <text x="290" y="1883" class="mono small" fill="#55708C">[x, y, θ, v, a, σ, ω, t]</text>
+    <path d="M559 1869 V1894" stroke="#DCE7EF" stroke-width="2"/>
+    <text x="592" y="1883" class="label" fill="#173B62">Visualization</text>
+    <text x="710" y="1883" class="small" fill="#55708C">parking plot · GIF animation</text>
+  </g>
 </svg>
