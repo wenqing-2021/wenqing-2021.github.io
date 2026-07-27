@@ -1,4 +1,4 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Safe RL for On-Ramp Merging | Shijie Yuan </title> <meta name="author" content="Shijie Yuan"> <meta name="description" content="Constraint-aware decision making with action shielding and model predictive control."> <meta name="keywords" content="autonomous driving, motion planning, safe reinforcement learning, trajectory planning, robotics"> <meta property="og:site_name" content="Shijie Yuan"> <meta property="og:type" content="website"> <meta property="og:title" content="Shijie Yuan | Safe RL for On-Ramp Merging"> <meta property="og:url" content="https://wenqing-2021.github.io/projects/safe-on-ramp-merging/"> <meta property="og:description" content="Constraint-aware decision making with action shielding and model predictive control."> <meta property="og:image" content="/assets/img/prof_pic.jpg"> <meta property="og:locale" content="en"> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content="Safe RL for On-Ramp Merging"> <meta name="twitter:description" content="Constraint-aware decision making with action shielding and model predictive control."> <meta name="twitter:image" content="/assets/img/prof_pic.jpg"> <script type="application/ld+json">
+<!DOCTYPE html> <html lang="en"> <head> <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> <meta charset="utf-8"> <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <title> Human-Aligned Safe RL for Highway On-Ramp Merging | Shijie Yuan </title> <meta name="author" content="Shijie Yuan"> <meta name="description" content="Preference-aware constrained RL, action shielding, and MPC for safe highway merging."> <meta name="keywords" content="autonomous driving, motion planning, safe reinforcement learning, trajectory planning, robotics"> <meta property="og:site_name" content="Shijie Yuan"> <meta property="og:type" content="website"> <meta property="og:title" content="Shijie Yuan | Human-Aligned Safe RL for Highway On-Ramp Merging"> <meta property="og:url" content="https://wenqing-2021.github.io/projects/safe-on-ramp-merging/"> <meta property="og:description" content="Preference-aware constrained RL, action shielding, and MPC for safe highway merging."> <meta property="og:image" content="/assets/img/prof_pic.jpg"> <meta property="og:locale" content="en"> <meta name="twitter:card" content="summary"> <meta name="twitter:title" content="Human-Aligned Safe RL for Highway On-Ramp Merging"> <meta name="twitter:description" content="Preference-aware constrained RL, action shielding, and MPC for safe highway merging."> <meta name="twitter:image" content="/assets/img/prof_pic.jpg"> <script type="application/ld+json">
     {
         "author":
         {
@@ -7,8 +7,8 @@
         },
         "url": "https://wenqing-2021.github.io/projects/safe-on-ramp-merging/",
         "@type": "WebSite",
-        "description": "Constraint-aware decision making with action shielding and model predictive control.",
-        "headline": "Safe RL for On-Ramp Merging",
+        "description": "Preference-aware constrained RL, action shielding, and MPC for safe highway merging.",
+        "headline": "Human-Aligned Safe RL for Highway On-Ramp Merging",
         
         "sameAs": ["https://github.com/wenqing-2021","https://scholar.google.com/citations?user=iLVzwyUAAAAJ"],
         
@@ -19,7 +19,247 @@
   :root {
     --max-content-width: 1050px;
   }
-</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%97&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://wenqing-2021.github.io/projects/safe-on-ramp-merging/"> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Shijie Yuan </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item active"> <a class="nav-link" href="/projects/">projects <span class="sr-only">(current)</span> </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Safe RL for On-Ramp Merging</h1> <p class="post-description">Constraint-aware decision making with action shielding and model predictive control.</p> </header> <article> <p>This research studies safe and efficient autonomous decision making in highway on-ramp merging. The hierarchical framework uses reinforcement learning for high-level maneuver decisions and model predictive control for low-level vehicle motion.</p> <h2 id="safety-mechanisms">Safety mechanisms</h2> <ul> <li>Safety requirements are represented explicitly as constraints rather than only as reward penalties.</li> <li>A preference-aware mechanism adapts the constraint limit to traffic conditions and driver risk preference.</li> <li>Action shielding evaluates candidate actions before execution and replaces unsafe or infeasible decisions.</li> </ul> <p>Simulation experiments demonstrate a better safety–efficiency trade-off across different traffic densities. The related peer-reviewed work is listed below <a class="citation" href="#teng2026adaptive">(Teng et al., 2026)</a>.</p> <p><a href="https://github.com/wenqing-2021/On_Ramp_Merge_Safe_RL" rel="external nofollow noopener" target="_blank">View code on GitHub</a> · <a href="https://doi.org/10.3390/machines14060605" rel="external nofollow noopener" target="_blank">Read the paper</a></p> </article> <h2>References</h2> <div class="publications"> <h2 class="bibliography">2026</h2> <ol class="bibliography"><li> <div class="row"> <div id="teng2026adaptive" class="col-sm-10"> <div class="title">Adaptive Constraint Regulation for Human Preference-Aware Safe Reinforcement Learning of On-Ramp Merging</div> <div class="author"> Jingjia Teng, Wenjie Huang, <em>Shijie Yuan</em>, and <span class="more-authors" title="click to view 5 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '5 more authors' ? 'Manjiang Hu, Hongmao Qin, Yang Li, Yougang Bian, Bai Li' : '5 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">5 more authors</span> </div> <div class="periodical"> <em>Machines</em>, May 2026 </div> <div class="periodical"> </div> <div class="links"> <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a> <a href="https://doi.org/10.3390/machines14060605" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> <a href="https://www.mdpi.com/2075-1702/14/6/605" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a> <a href="https://github.com/wenqing-2021/On_Ramp_Merge_Safe_RL" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a> </div> <div class="abstract hidden"> <p>Safe reinforcement learning for autonomous driving requires balancing safety constraints with driving efficiency. This paper proposes an adaptive constraint regulation framework for human preference-aware safe reinforcement learning in highway on-ramp merging scenarios. The method dynamically adjusts constraint limits according to traffic conditions and driver risk preferences, combined with an action shielding mechanism that filters unsafe decisions before execution. A hierarchical architecture separates high-level maneuver decisions from low-level model predictive control, ensuring both safety compliance and driving efficiency. Simulation experiments across varying traffic densities demonstrate that the proposed approach achieves a superior safety–efficiency trade-off compared to fixed-constraint baselines, maintaining collision-free merging while improving travel efficiency.</p> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">teng2026adaptive</span><span class="p">,</span>
+</style> <link rel="stylesheet" href="/assets/css/tailwind.css?v=50c64c15cbb9fd1ce6056fdb8bcb4b62"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" integrity="sha256-MVopmdyC2tYTiJ8wlktf0uh0v4NgT+vNdyVFepi7Q0c=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.5/css/academicons.min.css" integrity="sha256-SzrCOBJbGVFMahewkgjwnApaV2+av1DwMAA+/QGLyZw=" crossorigin="anonymous"> <link defer rel="stylesheet" href="https://cdn.jsdelivr.net/npm/scholar-icons@1.0.3/css/scholar-icons.css" integrity="sha256-VY3hHVj/hNX3fYG6wtbA6TcKJQl7+FthzGSyIB64klY=" crossorigin="anonymous"> <link defer rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons&amp;display=swap"> <link defer rel="stylesheet" href="/assets/css/jekyll-pygments-themes-github.css?v=591dab5a4e56573bf4ef7fd332894c99" media="" id="highlight_theme_light"> <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20100%20100%22&gt;&lt;text%20y=%22.9em%22%20font-size=%2290%22&gt;%F0%9F%9A%97&lt;/text&gt;&lt;/svg&gt;"> <link rel="stylesheet" href="/assets/css/main.css?v=f0b101217084a90093badfe99ff9a7d1"> <link rel="canonical" href="https://wenqing-2021.github.io/projects/safe-on-ramp-merging/"> </head> <body class="fixed-top-nav "> <header> <nav id="navbar" class="navbar navbar-light navbar-expand-sm fixed-top" role="navigation"> <div class="container"> <a class="navbar-brand title font-weight-lighter" href="/"> Shijie Yuan </a> <button class="navbar-toggler collapsed navbar-toggler-main" type="button" data-nav-toggle="navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar top-bar"></span> <span class="icon-bar middle-bar"></span> <span class="icon-bar bottom-bar"></span> </button> <div class="collapse navbar-collapse navbar-collapse-main" id="navbarNav"> <ul class="navbar-nav navbar-menu-list flex-nowrap"> <li class="nav-item "> <a class="nav-link" href="/">about </a> </li> <li class="nav-item "> <a class="nav-link" href="/publications/">publications </a> </li> <li class="nav-item active"> <a class="nav-link" href="/projects/">projects <span class="sr-only">(current)</span> </a> </li> <li class="nav-item"> <button id="search-toggle" type="button" title="Search" aria-label="Open search"> <span class="nav-link">ctrl k <i class="fa-solid fa-magnifying-glass"></i></span> </button> </li> </ul> </div> </div> </nav> <progress id="progress" value="0"> <div class="progress-container"> <span class="progress-bar"></span> </div> </progress> </header> <div class="container mt-5" role="main"> <div class="post"> <header class="post-header"> <h1 class="post-title">Human-Aligned Safe RL for Highway On-Ramp Merging</h1> <p class="post-description">Preference-aware constrained RL, action shielding, and MPC for safe highway merging.</p> </header> <article> <style>
+  .post {
+    max-width: 54rem;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .post .post-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0;
+  }
+
+  .post .post-header .post-description {
+    display: none;
+  }
+
+  .post .post-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    line-height: 1.18;
+    overflow-wrap: anywhere;
+  }
+
+  .research-project > h2 {
+    margin-top: 2.6rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--global-divider-color);
+    font-weight: 300;
+  }
+
+  .research-project .project-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .research-project .project-keywords li {
+    padding: 0.28rem 0.68rem;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 999px;
+    background: var(--global-card-bg-color);
+    color: var(--global-text-color-light);
+    font-size: 0.86rem;
+    line-height: 1.35;
+  }
+
+  .research-project .project-links {
+    margin: 0 0 1.4rem;
+    font-weight: 600;
+  }
+
+  .research-project .project-links i {
+    margin-right: 0.3rem;
+  }
+
+  .research-project .publications {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    column-gap: 1.15rem;
+    row-gap: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 1.4rem;
+  }
+
+  .research-project .publications h2.bibliography {
+    grid-column: 1;
+    align-self: start;
+    margin: 0;
+    padding: 0;
+    border-top: 0;
+    color: var(--global-text-color);
+    font-size: 1.5rem;
+    line-height: 1.2;
+    text-align: left;
+  }
+
+  .research-project .publications ol.bibliography {
+    grid-column: 2;
+    min-width: 0;
+    margin: 0;
+  }
+
+  .research-project .project-figure {
+    margin: 1.4rem 0 1.7rem;
+  }
+
+  .research-project .project-figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 0.55rem;
+    background: #fff;
+  }
+
+  .research-project .project-figure--network img {
+    max-height: 40rem;
+    object-fit: contain;
+  }
+
+  .research-project .project-figure--fuzzy-example img {
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .research-project .project-figure--action-shield img {
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .research-project .project-figure figcaption {
+    margin-top: 0.55rem;
+    color: var(--global-text-color-light);
+    font-size: 0.88rem;
+    line-height: 1.45;
+  }
+
+  .research-project .method-stage {
+    margin-top: 1rem;
+    padding: 1rem 1.1rem;
+    border-left: 3px solid var(--global-theme-color);
+    border-radius: 0 0.45rem 0.45rem 0;
+    background: color-mix(in srgb, var(--global-theme-color) 6%, transparent);
+  }
+
+  .research-project .method-stage + .method-stage {
+    margin-top: 0.85rem;
+  }
+
+  .research-project .method-stage h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+  }
+
+  .research-project .method-stage p {
+    margin: 0;
+  }
+
+  .research-project .experiment-summary {
+    margin-bottom: 0;
+  }
+
+  .research-project .metric-table-wrap {
+    overflow-x: auto;
+    margin: 1.2rem 0;
+    border: 1px solid var(--global-divider-color);
+    border-radius: 0.55rem;
+  }
+
+  .research-project .metric-table {
+    width: 100%;
+    min-width: 42rem;
+    margin: 0;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  .research-project .metric-table--wide {
+    min-width: 66rem;
+  }
+
+  .research-project .metric-table th,
+  .research-project .metric-table td {
+    padding: 0.7rem 0.78rem;
+    border-bottom: 1px solid var(--global-divider-color);
+    text-align: right;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  .research-project .metric-table th:first-child,
+  .research-project .metric-table td:first-child {
+    text-align: left;
+  }
+
+  .research-project .metric-table thead tr:first-child {
+    background: color-mix(in srgb, var(--global-theme-color) 10%, transparent);
+  }
+
+  .research-project .metric-table thead tr:last-child {
+    background: color-mix(in srgb, var(--global-theme-color) 5%, transparent);
+  }
+
+  .research-project .metric-table tr:last-child th,
+  .research-project .metric-table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .research-project .metric-table .proposed-row {
+    color: var(--global-theme-color);
+    font-weight: 600;
+  }
+
+  .research-project .table-caption {
+    margin: 1.7rem 0 -0.65rem;
+    color: var(--global-text-color-light);
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 575.98px) {
+    .post .post-title {
+      font-size: 2rem;
+    }
+
+    .research-project .method-stage {
+      padding: 0.9rem 1rem;
+    }
+
+    .research-project .project-keywords {
+      gap: 0.45rem;
+    }
+
+    .research-project .project-keywords li {
+      font-size: 0.8rem;
+    }
+
+    .research-project .publications {
+      grid-template-columns: 3.1rem minmax(0, 1fr);
+      column-gap: 0.75rem;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .post {
+      max-width: 72rem;
+    }
+
+    .post .post-title {
+      font-size: clamp(1rem, 1.2vw, 1.15rem);
+      letter-spacing: -0.025em;
+      white-space: nowrap;
+    }
+  }
+</style> <div class="research-project"> <p class="project-links"><a href="https://github.com/wenqing-2021/On_Ramp_Merge_Safe_RL" rel="external nofollow noopener" target="_blank"><i class="fa-brands fa-github" aria-hidden="true"></i>Source Code</a> · <a href="https://www.alphaxiv.org/abs/2503.02624" rel="external nofollow noopener" target="_blank"><i class="fa-solid fa-book" aria-hidden="true"></i>Paper</a></p> <div class="publications"> <h2 class="bibliography">2026</h2> <ol class="bibliography"><li> <div class="row"> <div id="teng2026adaptive" class="col-sm-10"> <div class="title">Adaptive Constraint Regulation for Human Preference-Aware Safe Reinforcement Learning of On-Ramp Merging</div> <div class="author"> Jingjia Teng, Wenjie Huang, <em>Shijie Yuan</em>, and <span class="more-authors" title="click to view 5 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '5 more authors' ? 'Manjiang Hu, Hongmao Qin, Yang Li, Yougang Bian, Bai Li' : '5 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">5 more authors</span> </div> <div class="periodical"> <em>Machines</em>, May 2026 </div> <div class="periodical"> </div> <div class="links"> <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a> <a href="https://doi.org/10.3390/machines14060605" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> <a href="https://www.mdpi.com/2075-1702/14/6/605" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a> <a href="https://github.com/wenqing-2021/On_Ramp_Merge_Safe_RL" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a> </div> <div class="abstract hidden"> <p>Safe reinforcement learning for autonomous driving requires balancing safety constraints with driving efficiency. This paper proposes an adaptive constraint regulation framework for human preference-aware safe reinforcement learning in highway on-ramp merging scenarios. The method dynamically adjusts constraint limits according to traffic conditions and driver risk preferences, combined with an action shielding mechanism that filters unsafe decisions before execution. A hierarchical architecture separates high-level maneuver decisions from low-level model predictive control, ensuring both safety compliance and driving efficiency. Simulation experiments across varying traffic densities demonstrate that the proposed approach achieves a superior safety–efficiency trade-off compared to fixed-constraint baselines, maintaining collision-free merging while improving travel efficiency.</p> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">teng2026adaptive</span><span class="p">,</span>
   <span class="na">title</span> <span class="p">=</span> <span class="s">{Adaptive Constraint Regulation for Human Preference-Aware Safe Reinforcement Learning of On-Ramp Merging}</span><span class="p">,</span>
   <span class="na">author</span> <span class="p">=</span> <span class="s">{Teng, Jingjia and Huang, Wenjie and Yuan, Shijie and Hu, Manjiang and Qin, Hongmao and Li, Yang and Bian, Yougang and Li, Bai}</span><span class="p">,</span>
   <span class="na">journal</span> <span class="p">=</span> <span class="s">{Machines}</span><span class="p">,</span>
@@ -30,7 +270,7 @@
   <span class="na">month</span> <span class="p">=</span> <span class="nv">may</span><span class="p">,</span>
   <span class="na">publisher</span> <span class="p">=</span> <span class="s">{MDPI}</span><span class="p">,</span>
   <span class="na">doi</span> <span class="p">=</span> <span class="s">{10.3390/machines14060605}</span><span class="p">,</span>
-<span class="p">}</span></code></pre></figure> </div> </div> </div> </li></ol> </div> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Shijie Yuan. © 2026 Shijie Yuan. Built with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="external nofollow noopener">al-folio</a> and hosted on <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Last updated: July 26, 2026. </div> </footer> <script>
+<span class="p">}</span></code></pre></figure> </div> </div> </div> </li></ol> </div> <figure class="project-figure"> <img src="/assets/img/projects/safe-on-ramp-merging/episode_001_predicted_trajectories.gif" alt="Animated MPC-predicted vehicle trajectories during an on-ramp merging episode." loading="lazy"> <figcaption>MPC-predicted trajectories during an on-ramp merging episode.</figcaption> </figure> <h2 id="abstract">Abstract</h2> <p>Autonomous on-ramp merging requires a practical safety–efficiency trade-off and a policy that reflects driver risk preference. This work proposes a hierarchical human-aligned safe RL framework: a constrained Markov decision process adapts its permissible safety cost to traffic density and user preference; discrete SAC learns high-level manoeuvres; and MPC executes low-level motion. Before execution, an action shield predicts trajectories, checks conflicts with surrounding traffic, and replaces unsafe decisions. Simulations across low-, medium-, and high-density traffic show substantially fewer safety violations while retaining efficient merges.</p> <h2 id="keywords">Keywords</h2> <ul class="project-keywords"> <li>Autonomous Driving</li> <li>On-Ramp Merging</li> <li>Safe Reinforcement Learning</li> <li>Action Shielding</li> <li>Model Predictive Control</li> <li>Human Risk Preference</li> </ul> <h2 id="methods">Methods</h2> <figure class="project-figure"> <img src="/assets/img/projects/safe-on-ramp-merging/SRL-MPC-architecture_0607.png" alt="Hierarchical architecture for preference-aware safe reinforcement learning and model predictive control in highway on-ramp merging." loading="lazy"> <figcaption>Hierarchical safe-merging architecture: high-level reinforcement-learning decisions are safety-checked before MPC generates low-level vehicle controls.</figcaption> </figure> <div class="method-stage"> <h3>1. MPC Prediction and Motion Execution</h3> <p>For a candidate high-level decision, MPC first maps the action to a reference speed and trajectory, transforms the reference from Frenet to Cartesian coordinates, and solves a quadratic program. In prediction mode it returns the ego vehicle’s future states for safety checking; in execution mode it returns the optimized control sequence.</p> </div> <figure class="project-figure project-figure--network"> <img src="/assets/img/projects/safe-on-ramp-merging/network_update.png" alt="Policy, critic, cost, and target-network construction used by the human-aligned safe reinforcement-learning algorithm." loading="lazy"> <figcaption>Network construction for the discrete SAC policy, twin reward critics, cost critic, and target networks.</figcaption> </figure> <div class="method-stage"> <h3>2. Human-Aligned Safe Reinforcement Learning</h3> <p>Traffic density and the user’s risk preference determine the CMDP cost limit through fuzzy control. The discrete SAC policy samples a manoeuvre, stores its shielded transition with reward and cost, and updates twin Q-networks, the cost network, policy, temperature, Lagrangian multiplier, and target networks. The constrained objective makes safety an explicit learning requirement rather than only a reward term.</p> </div> <figure class="project-figure project-figure--fuzzy-example"> <img src="/assets/img/projects/safe-on-ramp-merging/example_result.png" alt="Example fuzzy-control inference that maps risk preference and traffic density to a cost limit of 0.0595." loading="lazy"> <figcaption>Example Mamdani fuzzy-control inference. The aggregated fuzzy output is defuzzified into a CMDP cost limit of 0.0595.</figcaption> </figure> <div class="method-stage"> <h3>3. Action Shielding Module</h3> <p>The action shield uses MPC-predicted states to detect collisions, an unsafe continuation after the vehicle has merged, or a failure to reach the merge objective. When a decision is unsafe or invalid, it is replaced with a safe alternative before the low-level controller executes it, improving safety during both exploration and deployment.</p> </div> <figure class="project-figure project-figure--action-shield"> <img src="/assets/img/projects/safe-on-ramp-merging/ASM_module.png" alt="Action shielding replaces actions that cause a collision, an unexpected decision, or a failure to merge with safe alternatives." loading="lazy"> <figcaption>Action shielding in three typical unsafe situations: collision, unexpected decision after merging, and failure to merge. Unsafe actions are replaced before execution.</figcaption> </figure> <h2 id="experiments">Experiments</h2> <p class="experiment-summary">The experiments use a highway-env on-ramp scenario with low-, medium-, and high-density traffic. The following values reproduce the implementation settings and reported evaluation results from the accompanying paper.</p> <figure class="project-figure"> <img src="/assets/img/projects/safe-on-ramp-merging/train_results_a.png" alt="Training curves comparing Dueling DQN, SACD, PPO, and SACD-lambda-TM for crash ratio, average cost, and average reward." loading="lazy"> <figcaption>Training comparison with Dueling DQN, SACD, and PPO. Curves show crash ratio, average cost, and average reward; shaded bands indicate the 95% confidence interval across five random seeds.</figcaption> </figure> <figure class="project-figure"> <img src="/assets/img/projects/safe-on-ramp-merging/train_results_b.png" alt="Ablation training curves comparing SACD, SACD-lambda, SACD-lambda-M, and SACD-lambda-TM for crash ratio, average cost, and average reward." loading="lazy"> <figcaption>Ablation training comparison of SACD, SACD-λ, SACD-λ-M, and SACD-λ-TM. Curves show crash ratio, average cost, and average reward; shaded bands indicate the 95% confidence interval across five random seeds.</figcaption> </figure> <p class="table-caption">RL hyperparameters</p> <div class="metric-table-wrap" role="region" aria-label="Reinforcement-learning hyperparameters" tabindex="0"> <table class="metric-table"> <thead> <tr> <th scope="col">Parameter</th> <th scope="col">Value</th> </tr> </thead> <tbody> <tr> <th scope="row">Optimizer</th> <td>Adam</td> </tr> <tr> <th scope="row">Policy / critic / cost learning rate</th> <td>1e-4</td> </tr> <tr> <th scope="row">Temperature learning rate</th> <td>1e-4</td> </tr> <tr> <th scope="row">Initial Lagrangian multiplier</th> <td>1.0</td> </tr> <tr> <th scope="row">Lagrangian multiplier learning rate</th> <td>1e-4</td> </tr> <tr> <th scope="row">Replay-buffer size</th> <td>1e5</td> </tr> <tr> <th scope="row">Batch size</th> <td>256</td> </tr> </tbody> </table> </div> <p class="table-caption">Constraint-free RL baselines and the proposed method</p> <div class="metric-table-wrap" role="region" aria-label="Comparison of reinforcement-learning methods across traffic densities" tabindex="0"> <table class="metric-table metric-table--wide"> <thead> <tr> <th scope="col" rowspan="2">Method</th> <th scope="colgroup" colspan="3">Success rate (%)</th> <th scope="colgroup" colspan="3">Collision rate</th> <th scope="colgroup" colspan="3">Average cost</th> <th scope="colgroup" colspan="3">Average time (s)</th> </tr> <tr> <th scope="col">High</th> <th scope="col">Medium</th> <th scope="col">Low</th> <th scope="col">High</th> <th scope="col">Medium</th> <th scope="col">Low</th> <th scope="col">High</th> <th scope="col">Medium</th> <th scope="col">Low</th> <th scope="col">High</th> <th scope="col">Medium</th> <th scope="col">Low</th> </tr> </thead> <tbody> <tr> <th scope="row">Dueling DQN</th> <td>87.0</td> <td>94.3</td> <td>99.0</td> <td>0.013</td> <td>0.005</td> <td>0.005</td> <td>0.50</td> <td>0.28</td> <td>0.08</td> <td>11.78</td> <td>11.47</td> <td>10.85</td> </tr> <tr> <th scope="row">SACD</th> <td>94.5</td> <td>97.5</td> <td>99.2</td> <td>0.010</td> <td>0.008</td> <td>0.005</td> <td>0.44</td> <td>0.25</td> <td>0.10</td> <td>11.59</td> <td>11.33</td> <td>10.82</td> </tr> <tr> <th scope="row">PPO</th> <td>99.5</td> <td>97.7</td> <td>99.2</td> <td>0.003</td> <td>0.018</td> <td>0.008</td> <td>0.01</td> <td>0.03</td> <td>0.01</td> <td>12.36</td> <td>11.62</td> <td>10.95</td> </tr> <tr class="proposed-row"> <th scope="row">SACD-λ-TM (proposed)</th> <td>99.0</td> <td>99.5</td> <td>99.3</td> <td>0.003</td> <td>0.005</td> <td>0.005</td> <td>0.02</td> <td>0.02</td> <td>0.02</td> <td>11.87</td> <td>11.46</td> <td>10.96</td> </tr> </tbody> </table> </div> <h2 id="results">Results</h2> <p class="table-caption">Comparison with the lattice-based planner</p> <div class="metric-table-wrap" role="region" aria-label="Comparison between the lattice planner and proposed method" tabindex="0"> <table class="metric-table metric-table--wide"> <thead> <tr> <th scope="col" rowspan="2">Method</th> <th scope="colgroup" colspan="3">Success rate (%)</th> <th scope="colgroup" colspan="3">Collision rate</th> <th scope="colgroup" colspan="3">Average time (s)</th> </tr> <tr> <th scope="col">High</th> <th scope="col">Medium</th> <th scope="col">Low</th> <th scope="col">High</th> <th scope="col">Medium</th> <th scope="col">Low</th> <th scope="col">High</th> <th scope="col">Medium</th> <th scope="col">Low</th> </tr> </thead> <tbody> <tr> <th scope="row">Lattice</th> <td>98.5</td> <td>99.0</td> <td>97.3</td> <td>0.012</td> <td>0.010</td> <td>0.027</td> <td>10.44</td> <td>10.12</td> <td>9.93</td> </tr> <tr class="proposed-row"> <th scope="row">SACD-λ-TM (proposed)</th> <td>99.0</td> <td>99.5</td> <td>99.3</td> <td>0.003</td> <td>0.005</td> <td>0.005</td> <td>11.87</td> <td>11.46</td> <td>10.96</td> </tr> </tbody> </table> </div> <p class="table-caption">Ablation study</p> <div class="metric-table-wrap" role="region" aria-label="Ablation study across traffic densities" tabindex="0"> <table class="metric-table metric-table--wide"> <thead> <tr> <th scope="col" rowspan="2">Method</th> <th scope="colgroup" colspan="3">Success rate (%)</th> <th scope="colgroup" colspan="3">Collision rate</th> <th scope="colgroup" colspan="3">Average cost</th> <th scope="colgroup" colspan="3">Average time (s)</th> </tr> <tr> <th scope="col">High</th> <th scope="col">Medium</th> <th scope="col">Low</th> <th scope="col">High</th> <th scope="col">Medium</th> <th scope="col">Low</th> <th scope="col">High</th> <th scope="col">Medium</th> <th scope="col">Low</th> <th scope="col">High</th> <th scope="col">Medium</th> <th scope="col">Low</th> </tr> </thead> <tbody> <tr> <th scope="row">SACD</th> <td>94.5</td> <td>97.5</td> <td>99.2</td> <td>0.010</td> <td>0.008</td> <td>0.005</td> <td>0.44</td> <td>0.25</td> <td>0.10</td> <td>11.59</td> <td>11.33</td> <td>10.82</td> </tr> <tr> <th scope="row">SACD-λ</th> <td>97.2</td> <td>97.3</td> <td>99.3</td> <td>0.003</td> <td>0.005</td> <td>0.005</td> <td>0.23</td> <td>0.13</td> <td>0.04</td> <td>12.08</td> <td>11.54</td> <td>10.99</td> </tr> <tr> <th scope="row">SACD-λ-M</th> <td>98.3</td> <td>98.8</td> <td>98.9</td> <td>0.010</td> <td>0.008</td> <td>0.003</td> <td>0.02</td> <td>0.02</td> <td>0.02</td> <td>12.33</td> <td>11.58</td> <td>11.02</td> </tr> <tr class="proposed-row"> <th scope="row">SACD-λ-TM (proposed)</th> <td>99.0</td> <td>99.5</td> <td>99.3</td> <td>0.003</td> <td>0.005</td> <td>0.005</td> <td>0.02</td> <td>0.02</td> <td>0.02</td> <td>11.87</td> <td>11.46</td> <td>10.96</td> </tr> </tbody> </table> </div> </div> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Shijie Yuan. © 2026 Shijie Yuan. Built with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="external nofollow noopener">al-folio</a> and hosted on <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Last updated: July 27, 2026. </div> </footer> <script>
   window.alFolio = {
     compatBootstrap: false
   };
@@ -92,9 +332,9 @@ ninja.data = [{
           description: "Safe RL and constrained optimization for structured-road trajectory planning.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/risk-reachable-motion-planning/";
-            },},{id: "projects-safe-rl-for-on-ramp-merging",
-          title: 'Safe RL for On-Ramp Merging',
-          description: "Constraint-aware decision making with action shielding and model predictive control.",
+            },},{id: "projects-human-aligned-safe-rl-for-highway-on-ramp-merging",
+          title: 'Human-Aligned Safe RL for Highway On-Ramp Merging',
+          description: "Preference-aware constrained RL, action shielding, and MPC for safe highway merging.",
           section: "Projects",handler: () => {
               window.location.href = "/projects/safe-on-ramp-merging/";
             },},{
