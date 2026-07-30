@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">EasyRLlib workflow</title>
+  <desc id="desc">YAML configuration flows through run.py, a Gymnasium environment, and the PyTorch agent library. Agents branch into off-policy and on-policy training, supported by shared networks, buffers, MPI, and logging, before producing metrics, checkpoints, plots, and GIFs.</desc>
+
+  <defs>
+    <linearGradient id="canvas" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f6faff"/>
+      <stop offset="1" stop-color="#ffffff"/>
+    </linearGradient>
+    <filter id="shadow" x="-12%" y="-12%" width="124%" height="135%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#173b67" flood-opacity=".09"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" markerWidth="10" markerHeight="10" refX="10" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#6288af"/>
+    </marker>
+    <style>
+      .heading { fill: #12345b; font: 700 38px Arial, sans-serif; letter-spacing: .035em; }
+      .subheading { fill: #607d99; font: 500 18px Arial, sans-serif; }
+      .node { fill: #fff; stroke: #c7dced; stroke-width: 2.2; }
+      .node-blue { fill: #f3f8ff; stroke: #84b4e8; stroke-width: 2.2; }
+      .group { fill: #f8fbff; stroke: #b9d2e8; stroke-width: 2.2; }
+      .output { fill: #fffaf2; stroke: #edc178; stroke-width: 2.2; }
+      .title { fill: #12345b; font: 700 22px Arial, sans-serif; }
+      .label { fill: #476784; font: 500 16px Arial, sans-serif; }
+      .small { fill: #607d99; font: 600 14px Arial, sans-serif; }
+      .path { fill: #0b5ed7; font: 700 15px "Courier New", monospace; }
+      .chip { fill: #e8f3ff; stroke: #b9d5f2; stroke-width: 1; }
+      .chip-text { fill: #0b5ed7; font: 700 14px Arial, sans-serif; }
+      .line { fill: none; stroke: #6288af; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .icon-bg { fill: #e8f3ff; }
+      .icon { fill: none; stroke: #0b5ed7; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+      .icon-fill { fill: #0b5ed7; }
+      .divider { stroke: #d7e5f1; stroke-width: 1.6; }
+    </style>
+  </defs>
+
+  <rect width="1400" height="900" rx="24" fill="url(#canvas)"/>
+  <text class="heading" x="50" y="62">EASYRLLIB WORKFLOW</text>
+  <text class="subheading" x="50" y="94">Config → Runtime → Training → Artifacts</text>
+
+  <!-- Top-level modules -->
+  <rect class="node" filter="url(#shadow)" x="50" y="135" width="260" height="190" rx="18"/>
+  <circle class="icon-bg" cx="180" cy="184" r="29"/>
+  <g class="icon" transform="translate(180 184)">
+    <path d="M-13-19 H6 L15-10 V19 H-13 Z"/>
+    <path d="M6-19 V-10 H15"/>
+    <path d="M-6-2 H8 M-6 6 H8"/>
+  </g>
+  <text class="title" x="180" y="241" text-anchor="middle">YAML Config</text>
+  <text class="path" x="180" y="274" text-anchor="middle">experiment/</text>
+  <text class="small" x="180" y="302" text-anchor="middle">env · seed · device · agent</text>
+
+  <rect class="node-blue" filter="url(#shadow)" x="360" y="135" width="260" height="190" rx="18"/>
+  <circle class="icon-bg" cx="490" cy="184" r="29"/>
+  <g class="icon" transform="translate(490 184)">
+    <rect x="-19" y="-15" width="38" height="30" rx="4"/>
+    <path d="M-11-6 L-4 0 L-11 6 M2 7 H11"/>
+  </g>
+  <text class="title" x="490" y="241" text-anchor="middle">run.py</text>
+  <text class="path" x="490" y="274" text-anchor="middle">src/config/</text>
+  <text class="small" x="490" y="302" text-anchor="middle">load · MPI · factories</text>
+
+  <rect class="node" filter="url(#shadow)" x="670" y="135" width="260" height="190" rx="18"/>
+  <circle class="icon-bg" cx="800" cy="184" r="29"/>
+  <g class="icon" transform="translate(800 184)">
+    <path d="M-17-4 A18 18 0 0 1 13-13"/>
+    <path d="M13-13 H5 M13-13 V-5"/>
+    <path d="M17 4 A18 18 0 0 1-13 13"/>
+    <path d="M-13 13 H-5 M-13 13 V5"/>
+  </g>
+  <text class="title" x="800" y="241" text-anchor="middle">Gymnasium</text>
+  <text class="path" x="800" y="274" text-anchor="middle">gym.make()</text>
+  <text class="small" x="800" y="302" text-anchor="middle">Env · Discrete / Box</text>
+
+  <rect class="node-blue" filter="url(#shadow)" x="980" y="135" width="370" height="190" rx="18"/>
+  <circle class="icon-bg" cx="1165" cy="177" r="29"/>
+  <g transform="translate(1165 177)">
+    <path class="icon" d="M-18 0 L-5-12 M-18 0 L-5 12 M-5-12 L12-6 M-5-12 L12 8 M-5 12 L12-6 M-5 12 L12 8"/>
+    <circle class="icon-fill" cx="-18" cy="0" r="4"/>
+    <circle class="icon-fill" cx="-5" cy="-12" r="4"/>
+    <circle class="icon-fill" cx="-5" cy="12" r="4"/>
+    <circle class="icon-fill" cx="12" cy="-6" r="4"/>
+    <circle class="icon-fill" cx="12" cy="8" r="4"/>
+  </g>
+  <text class="title" x="1165" y="229" text-anchor="middle">PyTorch Agents</text>
+  <text class="path" x="1165" y="256" text-anchor="middle">src/agent_lib/</text>
+  <text class="small" x="1165" y="282" text-anchor="middle">DQN · Dueling DQN · SAC</text>
+  <text class="small" x="1165" y="305" text-anchor="middle">DDPG · TD3 · PPO · A2C</text>
+
+  <!-- Connectors: every endpoint touches a module edge -->
+  <path class="line" d="M310 230 H360"/>
+  <path class="line" d="M620 230 H670"/>
+  <path class="line" d="M930 230 H980"/>
+
+  <!-- Training group -->
+  <rect class="group" x="50" y="405" width="1300" height="300" rx="20"/>
+  <text class="path" x="80" y="438">src/train/ + src/common/</text>
+
+  <rect class="node-blue" filter="url(#shadow)" x="170" y="460" width="480" height="135" rx="16"/>
+  <circle class="icon-bg" cx="238" cy="510" r="27"/>
+  <g class="icon" transform="translate(238 510)">
+    <ellipse cx="0" cy="-10" rx="15" ry="6"/>
+    <path d="M-15-10 V10 C-15 18 15 18 15 10 V-10"/>
+    <path d="M-15 0 C-15 8 15 8 15 0"/>
+  </g>
+  <text class="title" x="420" y="500" text-anchor="middle">Off-policy</text>
+  <text class="small" x="420" y="534" text-anchor="middle">DQN · Dueling DQN · SAC</text>
+  <text class="small" x="420" y="560" text-anchor="middle">DDPG · TD3</text>
+
+  <rect class="node-blue" filter="url(#shadow)" x="750" y="460" width="480" height="135" rx="16"/>
+  <circle class="icon-bg" cx="818" cy="510" r="27"/>
+  <g class="icon" transform="translate(818 510)">
+    <path d="M-15-3 A16 16 0 0 1 11-12"/>
+    <path d="M11-12 H4 M11-12 V-5"/>
+    <path d="M15 3 A16 16 0 0 1-11 12"/>
+    <path d="M-11 12 H-4 M-11 12 V5"/>
+  </g>
+  <text class="title" x="1000" y="500" text-anchor="middle">On-policy</text>
+  <text class="small" x="1000" y="541" text-anchor="middle">PPO · A2C</text>
+
+  <path class="line" d="M1148 325 V370 H410 V460"/>
+  <path class="line" d="M1182 325 V390 H990 V460"/>
+
+  <rect class="node" x="130" y="625" width="1140" height="55" rx="14"/>
+  <line class="divider" x1="415" y1="638" x2="415" y2="667"/>
+  <line class="divider" x1="700" y1="638" x2="700" y2="667"/>
+  <line class="divider" x1="985" y1="638" x2="985" y2="667"/>
+
+  <g class="icon" transform="translate(205 652)">
+    <circle cx="-11" cy="0" r="4"/>
+    <circle cx="2" cy="-9" r="4"/>
+    <circle cx="2" cy="9" r="4"/>
+    <path d="M-7-2 L-2-7 M-7 2 L-2 7"/>
+  </g>
+  <text class="label" x="235" y="658">Networks</text>
+
+  <g class="icon" transform="translate(492 652)">
+    <ellipse cx="0" cy="-8" rx="12" ry="5"/>
+    <path d="M-12-8 V8 C-12 14 12 14 12 8 V-8"/>
+  </g>
+  <text class="label" x="522" y="658">Buffers</text>
+
+  <g class="icon" transform="translate(773 652)">
+    <circle cx="-10" cy="0" r="3"/>
+    <circle cx="10" cy="-9" r="3"/>
+    <circle cx="10" cy="9" r="3"/>
+    <path d="M-7 0 H0 V-9 H7 M0 0 V9 H7"/>
+  </g>
+  <text class="label" x="803" y="658">MPI</text>
+
+  <g class="icon" transform="translate(1059 652)">
+    <path d="M-13-13 H13 V13 H-13 Z"/>
+    <path d="M-7-5 H7 M-7 1 H7 M-7 7 H2"/>
+  </g>
+  <text class="label" x="1089" y="658">Logger</text>
+
+  <!-- Artifacts -->
+  <rect class="output" filter="url(#shadow)" x="200" y="765" width="1000" height="110" rx="18"/>
+  <text class="title" x="700" y="798" text-anchor="middle">Artifacts</text>
+  <path class="line" d="M700 705 V765"/>
+
+  <g class="icon" transform="translate(285 835)">
+    <path d="M-13-16 H13 V16 H-13 Z M-7-7 H7 M-7 0 H7 M-7 7 H2"/>
+  </g>
+  <text class="label" x="315" y="841">progress.txt</text>
+
+  <g class="icon" transform="translate(540 835)">
+    <path d="M-15-15 H11 L15-11 V15 H-15 Z"/>
+    <circle cx="0" cy="4" r="7"/>
+  </g>
+  <text class="label" x="570" y="841">checkpoints</text>
+
+  <g class="icon" transform="translate(795 835)">
+    <path d="M-16 14 V-14 M-16 14 H16 M-10 7 L-2-1 L5 3 L14-10"/>
+  </g>
+  <text class="label" x="825" y="841">curves</text>
+
+  <g class="icon" transform="translate(1025 835)">
+    <rect x="-17" y="-13" width="34" height="26" rx="3"/>
+    <path d="M-4-7 L8 0 L-4 7 Z"/>
+  </g>
+  <text class="label" x="1055" y="841">GIFs</text>
+</svg>

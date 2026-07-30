@@ -5,6 +5,10 @@ description: Hybrid A* and optimization-based trajectory planning in narrow park
 img: assets/img/projects/automated-valet-parking/automated_valet_parking_PIC.png
 importance: 2
 category: research
+highlights:
+  - "Searches for a collision-free path with Hybrid A*."
+  - "Smooths the path with cubic interpolation."
+  - "Plans speed and control with IPOPT."
 ---
 
 <style>

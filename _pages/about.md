@@ -102,7 +102,7 @@ latest_posts:
 
   .profile-location {
     margin: 0.15rem 0 1.2rem !important;
-    font-size: 0.8rem;
+    font-size: 1rem;
     color: var(--global-text-color-light, #666);
   }
 
@@ -191,15 +191,15 @@ latest_posts:
   /* --- compact project cards --- */
   .home-projects .project-cards {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.15rem;
     margin: 0;
   }
 
   .home-projects .project-card {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(10rem, 32%) minmax(0, 1fr);
     min-width: 0;
-    flex-direction: column;
     overflow: hidden;
     border: 1px solid var(--global-divider-color);
     border-radius: 0.65rem;
@@ -220,7 +220,7 @@ latest_posts:
     width: 100%;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    border-bottom: 1px solid var(--global-divider-color);
+    border-right: 1px solid var(--global-divider-color);
     background: color-mix(in srgb, var(--global-theme-color) 4%, var(--global-card-bg-color));
   }
 
@@ -252,7 +252,7 @@ latest_posts:
 
   .home-projects .project-card-title {
     margin: 0 0 0.4rem;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 500;
     line-height: 1.38;
   }
@@ -266,6 +266,22 @@ latest_posts:
     color: var(--global-text-color-light);
     font-size: 0.86rem;
     line-height: 1.45;
+  }
+
+  .home-projects .project-card-highlights {
+    margin: 0.65rem 0 0;
+    padding-left: 1.05rem;
+    color: var(--global-text-color-light);
+    font-size: 0.95rem;
+    line-height: 1.38;
+  }
+
+  .home-projects .project-card-highlights li + li {
+    margin-top: 0.2rem;
+  }
+
+  .home-projects .project-card-highlights li::marker {
+    color: var(--global-theme-color);
   }
 
   .home-projects-link {
@@ -339,9 +355,14 @@ latest_posts:
   }
 
   @media (max-width: 575.98px) {
-    .home-projects .project-cards {
+    .home-projects .project-card {
       grid-template-columns: minmax(0, 1fr);
-      gap: 1rem;
+    }
+
+    .home-projects .project-card-media {
+      aspect-ratio: 4 / 3;
+      border-right: 0;
+      border-bottom: 1px solid var(--global-divider-color);
     }
 
     .education-item {
@@ -366,9 +387,9 @@ latest_posts:
   });
 </script>
 
-I am an autonomous driving algorithm engineer currently **seeking Ph.D. opportunities**. I received my M.E. in Mechanical Engineering from [Hunan University](https://www-en.hnu.edu.cn/) in 2024 and my B.E. in Vehicle Engineering from [Dalian University of Technology](https://en.dlut.edu.cn/) in 2021.
+I am currently **seeking Ph.D. positions** focused on reinforcement learning and motion planning for robotic systems. I received my M.E. in Mechanical Engineering from [Hunan University](https://www-en.hnu.edu.cn/) in 2024 and my B.E. in Vehicle Engineering from [Dalian University of Technology](https://en.dlut.edu.cn/) in 2021.
 
-At [Li Auto](https://www.liauto.com/) (2024–2026), I developed learning-based trajectory planning modules that have been deployed in millions of production vehicles. My research interests include **safe reinforcement learning**, **risk-aware motion planning**, and **constrained optimization** for complex driving scenarios. My long-term goal is to develop safe, intelligent, and trustworthy robotic systems that assist human beings, augment human capabilities, and improve quality of life.
+At [Li Auto](https://www.liauto.com/) (2024 – present), I developed learning-based trajectory planning modules that have been deployed in millions of production vehicles. My research interests include **safe reinforcement learning**, **risk-aware motion planning**, and **constrained optimization** for complex driving scenarios. My long-term goal is to develop safe, intelligent, and trustworthy robotic systems that assist human beings, augment human capabilities, and improve quality of life.
 
 <section class="education">
   <h2>Education</h2>
@@ -397,22 +418,31 @@ At [Li Auto](https://www.liauto.com/) (2024–2026), I developed learning-based 
   {% assign sorted_projects = site.projects | sort: "importance" %}
   <div class="project-cards">
     {% for project in sorted_projects %}
-      <article class="project-card">
-        <div class="project-card-media">
-          <img
-            src="{{ project.img | prepend: '/' | relative_url }}"
-            alt="{{ project.title }} project cover. Click to enlarge."
-            data-project-cover-zoom
-            loading="lazy"
-          >
-        </div>
-        <a class="project-card-link" href="{{ project.url | relative_url }}" aria-label="Open project: {{ project.title }}">
-          <div class="project-card-body">
-            <h3 class="project-card-title">{{ project.title }}</h3>
-            <p class="project-card-description">{{ project.description }}</p>
+      {% unless project.title == "EasyRLlib" %}
+        <article class="project-card">
+          <div class="project-card-media">
+            <img
+              src="{{ project.img | prepend: '/' | relative_url }}"
+              alt="{{ project.title }} project cover. Click to enlarge."
+              data-project-cover-zoom
+              loading="lazy"
+            >
           </div>
-        </a>
-      </article>
+          <a class="project-card-link" href="{{ project.url | relative_url }}" aria-label="Open project: {{ project.title }}">
+            <div class="project-card-body">
+              <h3 class="project-card-title">{{ project.title }}</h3>
+              <p class="project-card-description">{{ project.description }}</p>
+              {% if project.highlights %}
+                <ul class="project-card-highlights">
+                  {% for highlight in project.highlights %}
+                    <li>{{ highlight }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </div>
+          </a>
+        </article>
+      {% endunless %}
     {% endfor %}
   </div>
   <p class="home-projects-link"><a href="{{ '/projects/' | relative_url }}">View all projects →</a></p>

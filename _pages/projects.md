@@ -10,15 +10,15 @@ nav_order: 2
 <style>
   .project-cards {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 1.4rem;
     margin: 0;
   }
 
   .project-card {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(13rem, 30%) minmax(0, 1fr);
     min-width: 0;
-    flex-direction: column;
     overflow: hidden;
     border: 1px solid var(--global-divider-color);
     border-radius: 0.65rem;
@@ -39,7 +39,7 @@ nav_order: 2
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border-bottom: 1px solid var(--global-divider-color);
+    border-right: 1px solid var(--global-divider-color);
     background: color-mix(in srgb, var(--global-theme-color) 4%, var(--global-card-bg-color));
   }
 
@@ -86,10 +86,34 @@ nav_order: 2
     line-height: 1.48;
   }
 
+  .project-card-highlights {
+    margin: 0.7rem 0 0;
+    padding-left: 1.1rem;
+    color: var(--global-text-color-light);
+    font-size: 1.05rem;
+    line-height: 1.42;
+  }
+
+  .project-card-highlights li + li {
+    margin-top: 0.22rem;
+  }
+
+  .project-card-highlights li::marker {
+    color: var(--global-theme-color);
+  }
+
   @media (max-width: 575.98px) {
     .project-cards {
-      grid-template-columns: minmax(0, 1fr);
       gap: 1rem;
+    }
+
+    .project-card {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .project-card-media {
+      border-right: 0;
+      border-bottom: 1px solid var(--global-divider-color);
     }
   }
 </style>
@@ -111,6 +135,13 @@ nav_order: 2
         <div class="project-card-body">
           <h2 class="project-card-title">{{ project.title }}</h2>
           <p class="project-card-description">{{ project.description }}</p>
+          {% if project.highlights %}
+            <ul class="project-card-highlights">
+              {% for highlight in project.highlights %}
+                <li>{{ highlight }}</li>
+              {% endfor %}
+            </ul>
+          {% endif %}
         </div>
       </a>
     </article>

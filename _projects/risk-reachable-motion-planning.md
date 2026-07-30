@@ -5,6 +5,10 @@ description: Safe RL and constrained optimization for structured-road trajectory
 img: assets/img/projects/risk-reachable-motion-planning/risk_planing_PIC.png
 importance: 1
 category: research
+highlights:
+  - "Builds uncertainty-aware risk-reachable sets."
+  - "Uses PPO-Lagrangian to generate a safe initial trajectory."
+  - "Refines the trajectory with constrained iLQR."
 ---
 
 <style>

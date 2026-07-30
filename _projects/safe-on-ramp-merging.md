@@ -5,6 +5,10 @@ description: Preference-aware constrained RL, action shielding, and MPC for safe
 img: assets/img/projects/safe-on-ramp-merging/SRL-MPC-architecture_0607.png
 importance: 3
 category: research
+highlights:
+  - "Uses discrete SAC for merging decisions."
+  - "Rejects unsafe actions with a trajectory shield."
+  - "Executes smooth vehicle motion with MPC."
 ---
 
 <style>

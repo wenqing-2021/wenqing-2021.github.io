@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title desc">
   <title id="title">EasyRLlib</title>
-  <desc id="desc">A reinforcement learning policy network with safety constraints.</desc>
+  <desc id="desc">A compact collection of reinforcement-learning algorithms for Gymnasium experiments.</desc>
   <rect width="800" height="450" fill="#f8fbff"/>
   <g stroke="#8bb9ef" stroke-width="5">
     <path d="M185 230 L330 150 M185 230 L330 230 M185 230 L330 310 M330 150 L475 190 M330 150 L475 270 M330 230 L475 190 M330 230 L475 270 M330 310 L475 190 M330 310 L475 270 M475 190 L620 230 M475 270 L620 230"/>
@@ -11,5 +11,5 @@
   <circle cx="620" cy="230" r="34" fill="#ff9f1c" stroke="#d77b00" stroke-width="5"/>
   <path d="M607 230 L618 241 L638 216" fill="none" stroke="#ffffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
   <text x="54" y="70" fill="#12345b" font-family="Arial, sans-serif" font-size="34" font-weight="700">EASYRLLIB</text>
-  <text x="56" y="108" fill="#54708f" font-family="Arial, sans-serif" font-size="20">PyTorch · Reinforcement Learning · Safe RL</text>
+  <text x="56" y="108" fill="#54708f" font-family="Arial, sans-serif" font-size="20">PyTorch · Reproducible · Gymnasium</text>
 </svg>
