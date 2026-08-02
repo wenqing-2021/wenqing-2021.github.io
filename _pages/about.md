@@ -387,7 +387,7 @@ latest_posts:
   });
 </script>
 
-I am currently **seeking Ph.D. positions** focused on reinforcement learning and motion planning for robotic systems. I received my M.E. in Mechanical Engineering from [Hunan University](https://www-en.hnu.edu.cn/) in 2024 and my B.E. in Vehicle Engineering from [Dalian University of Technology](https://en.dlut.edu.cn/) in 2021.
+I am currently **an independent research** focused on reinforcement learning and motion planning for robotic systems. I received my M.E. in Mechanical Engineering from [Hunan University](https://www-en.hnu.edu.cn/) in 2024 and my B.E. in Vehicle Engineering from [Dalian University of Technology](https://en.dlut.edu.cn/) in 2021.
 
 At [Li Auto](https://www.liauto.com/) (2024 – present), I developed learning-based trajectory planning modules that have been deployed in millions of production vehicles. My research interests include **safe reinforcement learning**, **risk-aware motion planning**, and **constrained optimization** for complex driving scenarios. My long-term goal is to develop safe, intelligent, and trustworthy robotic systems that assist human beings, augment human capabilities, and improve quality of life.
 
