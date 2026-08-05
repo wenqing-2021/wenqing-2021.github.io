@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-07-24'
+  last_updated: '2026-08-05'
 papers:
   iLVzwyUAAAAJ:KxtntwgDAa4C:
     citations: 0
@@ -9,11 +9,11 @@ papers:
     citations: 1
     title: Reachable sets-based trajectory planning combining reinforcement learning and iLQR
     year: '2025'
-  iLVzwyUAAAAJ:dshw04ExmUIC:
-    citations: 5
-    title: Human-aligned Safe Reinforcement Learning for Highway On-Ramp Merging in Dense Traffic
-    year: '2025'
   iLVzwyUAAAAJ:nb7KW1ujOQ8C:
     citations: 6
     title: Space discretization-based optimal trajectory planning for automated vehicles in narrow corridor scenes
     year: '2022'
+  iLVzwyUAAAAJ:uWQEDVKXjbEC:
+    citations: 5
+    title: Human-aligned safe reinforcement learning for highway on-ramp merging in dense traffic
+    year: '2025'
