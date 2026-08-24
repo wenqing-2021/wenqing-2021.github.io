@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-08-05'
+  last_updated: '2026-08-24'
 papers:
   iLVzwyUAAAAJ:KxtntwgDAa4C:
     citations: 0
@@ -14,6 +14,6 @@ papers:
     title: Space discretization-based optimal trajectory planning for automated vehicles in narrow corridor scenes
     year: '2022'
   iLVzwyUAAAAJ:uWQEDVKXjbEC:
-    citations: 5
+    citations: 6
     title: Human-aligned safe reinforcement learning for highway on-ramp merging in dense traffic
     year: '2025'
