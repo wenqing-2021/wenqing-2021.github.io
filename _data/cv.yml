@@ -19,7 +19,7 @@ cv:
         studyType: Master of Engineering
         start_date: 2021-09
         end_date: 2024-06
-        score: "GPA: 3.57/4.0"
+        score: "Average score: 85.4/100"
         highlights:
           - "Thesis: The Trajectory Planning Method for Intelligent Vehicles Using Reinforcement Learning and Risk-Reachable Sets"
           - "Research: risk-aware planning, deep reinforcement learning, and autonomous driving"
@@ -31,7 +31,7 @@ cv:
         studyType: Bachelor of Engineering
         start_date: 2017-09
         end_date: 2021-06
-        score: "GPA: 3.45/4.0"
+        score: "Average score: 84.5/100"
         highlights:
           - Excellent Graduate of Dalian University of Technology
 
