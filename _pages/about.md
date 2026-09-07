@@ -398,7 +398,7 @@ At [Li Auto](https://www.liauto.com/) (2024 – present), I developed learning-b
       <div class="education-period">2021.09–2024.06</div>
       <div>
         <p class="education-school"><a href="https://www-en.hnu.edu.cn/">Hunan University</a></p>
-        <p class="education-degree">M.E. in Mechanical Engineering · Average score: 85.4/100</p>
+        <p class="education-degree">M.E. in Mechanical Engineering</p>
         <p class="education-detail">Thesis: The Trajectory Planning Method for Intelligent Vehicles Using Reinforcement Learning and Risk-Reachable Sets</p>
       </div>
     </div>
@@ -406,7 +406,7 @@ At [Li Auto](https://www.liauto.com/) (2024 – present), I developed learning-b
       <div class="education-period">2017.09–2021.06</div>
       <div>
         <p class="education-school"><a href="https://en.dlut.edu.cn/">Dalian University of Technology</a></p>
-        <p class="education-degree">B.E. in Vehicle Engineering · Average score: 84.5/100</p>
+        <p class="education-degree">B.E. in Vehicle Engineering</p>
         <p class="education-detail">Excellent Graduate of Dalian University of Technology</p>
       </div>
     </div>
