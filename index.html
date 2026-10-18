@@ -106,6 +106,7 @@
 
   .profile-social-links a {
     color: var(--global-text-color);
+    font-family: Georgia, "Times New Roman", serif;
     font-size: 0.82rem;
     line-height: 1.6;
     text-decoration: none;
@@ -127,21 +128,24 @@
   }
 
   /* --- align homepage sections with body text --- */
-  article > h2,
-  article > .news,
-  article > .publications,
+  article .home-news,
+  article .home-publications,
   article .education,
   article .home-projects {
     margin-left: 11rem;
   }
 
   .education,
+  .home-news,
+  .home-publications,
   .home-projects {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
 
   .education > h2,
+  .home-news > h2,
+  .home-publications > h2,
   .home-projects > h2 {
     font-weight: 300;
   }
@@ -190,18 +194,13 @@
   .home-projects .project-card {
     display: grid;
     grid-template-columns: minmax(10rem, 32%) minmax(0, 1fr);
+    align-items: center;
+    column-gap: 1.5rem;
     min-width: 0;
-    overflow: hidden;
-    border: 1px solid var(--global-divider-color);
-    border-radius: 0.65rem;
-    background: var(--global-card-bg-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .home-projects .project-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.09);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   .home-projects .project-card-media {
@@ -211,8 +210,8 @@
     width: 100%;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    border-right: 1px solid var(--global-divider-color);
-    background: color-mix(in srgb, var(--global-theme-color) 4%, var(--global-card-bg-color));
+    border: 0;
+    background: transparent;
   }
 
   .home-projects .project-card-media img {
@@ -238,7 +237,7 @@
   .home-projects .project-card-body {
     display: flex;
     flex-direction: column;
-    padding: 0.9rem 1rem 1rem;
+    padding: 0;
   }
 
   .home-projects .project-card-title {
@@ -291,18 +290,19 @@
   }
 
   /* --- keep news dates close to their corresponding events --- */
-  article > .news th[scope="row"] {
+  .home-news .news th[scope="row"] {
     width: 1% !important;
     padding-right: 1rem;
     white-space: nowrap;
   }
 
-  article > .news td {
+  .home-news .news td {
     padding-left: 0;
   }
 
   /* --- divider under section headings --- */
-  article > h2,
+  .home-news > h2,
+  .home-publications > h2,
   .education > h2,
   .home-projects > h2 {
     border-bottom: 1px solid #e0e0e0;
@@ -310,35 +310,144 @@
     margin-bottom: 0.8rem;
   }
 
-  /* --- capitalize "news", remove its link --- */
-  article > h2:has(+ .news) {
-    text-transform: capitalize;
+  /* --- About-only publication rows, matching the reference layout --- */
+  .home-publications > h2 {
+    margin-bottom: 1.75rem;
+    padding-bottom: 0;
+    border-bottom: 0;
     font-weight: 300;
-  }
-  article > h2:has(+ .news) a {
-    pointer-events: none;
-    text-decoration: none;
-    color: inherit;
+    text-transform: capitalize;
   }
 
-  /* --- rename "selected publications" → "Publications" --- */
-  article > h2:has(+ .publications) {
-    font-weight: 300;
+  .home-publications > h2 a {
+    color: inherit;
+    text-decoration: none;
   }
-  article > h2:has(+ .publications) a {
-    font-size: 0;
-    pointer-events: none;
+
+  .home-publications > .publications ol.bibliography {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
-  article > h2:has(+ .publications) a::before {
-    content: "Publications";
-    font-size: 2rem;
+
+  .home-publications > .publications ol.bibliography > li {
+    margin: 0 0 2rem;
+    padding: 0;
+  }
+
+  .home-publications > .publications .row {
+    display: grid;
+    grid-template-columns: 12.5rem minmax(0, 1fr);
+    grid-template-rows: min-content min-content;
+    gap: 0.45rem 1.8rem;
+    align-items: start;
+    margin: 0;
+  }
+
+  .home-publications > .publications .row:has(#teng2026adaptive) {
+    --publication-venue: "Machines";
+    --publication-preview: url("/assets/img/projects/safe-on-ramp-merging/SRL-MPC-architecture_0607.png");
+  }
+
+  .home-publications > .publications .row:has(#xu2022space) {
+    --publication-venue: "Electronics";
+    --publication-preview: url("/assets/img/publication_preview/corridor-fig10.png");
+  }
+
+  .home-publications > .publications .row::before {
+    content: var(--publication-venue);
+    grid-column: 1;
+    grid-row: 1;
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.2rem;
+    background: #bf4667;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .home-publications > .publications .row::after {
+    content: "";
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    aspect-ratio: 8 / 5;
+    border-radius: 0.25rem;
+    background: #fff var(--publication-preview) center / contain no-repeat;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .home-publications > .publications .row > div[id] {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .home-publications > .publications .title {
+    margin-bottom: 0.1rem;
+    color: var(--global-text-color);
+    font-weight: 500;
+  }
+
+  .home-publications > .publications .author {
     color: var(--global-text-color);
   }
 
+  .home-publications > .publications .author em {
+    font-style: normal;
+    text-decoration: none;
+  }
+
+  .home-publications > .publications .periodical {
+    margin: 0;
+  }
+
+  .home-publications > .publications .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.6rem;
+    margin-top: 0.4rem;
+  }
+
+  .home-publications > .publications .links .btn {
+    min-width: 3.4rem;
+    margin: 0;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid var(--global-text-color);
+    border-radius: 0;
+    background: transparent;
+    color: var(--global-text-color);
+    box-shadow: none;
+    font-size: 0.65rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .home-publications > .publications .links .btn:hover,
+  .home-publications > .publications .links .btn:focus-visible {
+    border-color: var(--global-theme-color);
+    color: var(--global-theme-color);
+  }
+
+  @media (min-width: 576px) and (max-width: 991.98px) {
+    .home-publications > .publications .row {
+      grid-template-columns: 10rem minmax(0, 1fr);
+      column-gap: 1.25rem;
+    }
+  }
+
   @media (max-width: 767.98px) {
-    article > h2,
-    article > .news,
-    article > .publications,
+    article .home-news,
+    article .home-publications,
     article .education,
     article .home-projects {
       margin-left: 0;
@@ -348,12 +457,26 @@
   @media (max-width: 575.98px) {
     .home-projects .project-card {
       grid-template-columns: minmax(0, 1fr);
+      row-gap: 0.8rem;
     }
 
     .home-projects .project-card-media {
       aspect-ratio: 4 / 3;
-      border-right: 0;
-      border-bottom: 1px solid var(--global-divider-color);
+    }
+
+    .home-publications > .publications .row {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 0.6rem;
+    }
+
+    .home-publications > .publications .row::before,
+    .home-publications > .publications .row::after {
+      width: min(100%, 12.5rem);
+    }
+
+    .home-publications > .publications .row > div[id] {
+      grid-column: 1;
+      grid-row: 3;
     }
 
     .education-item {
@@ -374,7 +497,7 @@
       }
     });
   });
-</script> <p>I am currently <strong>an independent research</strong> focused on reinforcement learning and motion planning for robotic systems. I received my M.E. in Mechanical Engineering from <a href="https://www-en.hnu.edu.cn/" rel="external nofollow noopener" target="_blank">Hunan University</a> in 2024 and my B.E. in Vehicle Engineering from <a href="https://en.dlut.edu.cn/" rel="external nofollow noopener" target="_blank">Dalian University of Technology</a> in 2021.</p> <p>At <a href="https://www.liauto.com/" rel="external nofollow noopener" target="_blank">Li Auto</a> (2024 – present), I developed learning-based trajectory planning modules that have been deployed in millions of production vehicles. My research interests include <strong>safe reinforcement learning</strong>, <strong>risk-aware motion planning</strong>, and <strong>constrained optimization</strong> for complex driving scenarios. My long-term goal is to develop safe, intelligent, and trustworthy robotic systems that assist human beings, augment human capabilities, and improve quality of life.</p> <section class="education"> <h2>Education</h2> <div class="education-list"> <div class="education-item"> <div class="education-period">2021.09–2024.06</div> <div> <p class="education-school"><a href="https://www-en.hnu.edu.cn/" rel="external nofollow noopener" target="_blank">Hunan University</a></p> <p class="education-degree">M.E. in Mechanical Engineering</p> <p class="education-detail">Thesis: The Trajectory Planning Method for Intelligent Vehicles Using Reinforcement Learning and Risk-Reachable Sets</p> </div> </div> <div class="education-item"> <div class="education-period">2017.09–2021.06</div> <div> <p class="education-school"><a href="https://en.dlut.edu.cn/" rel="external nofollow noopener" target="_blank">Dalian University of Technology</a></p> <p class="education-degree">B.E. in Vehicle Engineering</p> <p class="education-detail">Excellent Graduate of Dalian University of Technology</p> </div> </div> </div> </section> <section class="home-projects"> <h2>Projects</h2> <div class="project-cards"> <article class="project-card"> <div class="project-card-media"> <img src="/assets/img/projects/risk-reachable-motion-planning/risk_planing_PIC.png" alt="The Trajectory Planning Method for Intelligent Vehicles Using Reinforcement Learning and Risk-Reachable Sets project cover. Click to enlarge." data-project-cover-zoom="" loading="lazy"> </div> <a class="project-card-link" href="/projects/risk-reachable-motion-planning/" aria-label="Open project: The Trajectory Planning Method for Intelligent Vehicles Using Reinforcement Learning and Risk-Reachable Sets"> <div class="project-card-body"> <h3 class="project-card-title">The Trajectory Planning Method for Intelligent Vehicles Using Reinforcement Learning and Risk-Reachable Sets</h3> <p class="project-card-description">Safe RL and constrained optimization for structured-road trajectory planning.</p> <ul class="project-card-highlights"> <li>Builds uncertainty-aware risk-reachable sets.</li> <li>Uses PPO-Lagrangian to generate a safe initial trajectory.</li> <li>Refines the trajectory with constrained iLQR.</li> </ul> </div> </a> </article> <article class="project-card"> <div class="project-card-media"> <img src="/assets/img/projects/automated-valet-parking/automated_valet_parking_PIC.png" alt="Automated Valet Parking project cover. Click to enlarge." data-project-cover-zoom="" loading="lazy"> </div> <a class="project-card-link" href="/projects/automated-valet-parking/" aria-label="Open project: Automated Valet Parking"> <div class="project-card-body"> <h3 class="project-card-title">Automated Valet Parking</h3> <p class="project-card-description">Hybrid A* and optimization-based trajectory planning in narrow parking spaces.</p> <ul class="project-card-highlights"> <li>Searches for a collision-free path with Hybrid A*.</li> <li>Smooths the path with cubic interpolation.</li> <li>Plans speed and control with IPOPT.</li> </ul> </div> </a> </article> <article class="project-card"> <div class="project-card-media"> <img src="/assets/img/projects/safe-on-ramp-merging/SRL-MPC-architecture_0607.png" alt="Human-Aligned Safe RL for Highway On-Ramp Merging project cover. Click to enlarge." data-project-cover-zoom="" loading="lazy"> </div> <a class="project-card-link" href="/projects/safe-on-ramp-merging/" aria-label="Open project: Human-Aligned Safe RL for Highway On-Ramp Merging"> <div class="project-card-body"> <h3 class="project-card-title">Human-Aligned Safe RL for Highway On-Ramp Merging</h3> <p class="project-card-description">Preference-aware constrained RL, action shielding, and MPC for safe highway merging.</p> <ul class="project-card-highlights"> <li>Uses discrete SAC for merging decisions.</li> <li>Rejects unsafe actions with a trajectory shield.</li> <li>Executes smooth vehicle motion with MPC.</li> </ul> </div> </a> </article> </div> <p class="home-projects-link"><a href="/projects/">View all projects →</a></p> </section> <script defer src="/assets/js/project-cover-zoom.js"></script> </div> <h2> <a href="/news/" style="color: inherit">news</a> </h2> <div class="news"> <div class="table-responsive"> <table class="table table-sm table-borderless"> <tr> <th scope="row" style="width: 20%">May 28, 2026</th> <td> Our paper on <a href="https://doi.org/10.3390/machines14060605" rel="external nofollow noopener" target="_blank">preference-aware safe reinforcement learning for on-ramp merging</a> was published in <em>Machines</em>. </td> </tr> <tr> <th scope="row" style="width: 20%">Jul 01, 2024</th> <td> Joined Li Auto as an Autonomous Driving Algorithm Engineer, working on learning-based planning for urban driving. </td> </tr> <tr> <th scope="row" style="width: 20%">Jun 30, 2024</th> <td> Received my M.E. in Mechanical Engineering from Hunan University. </td> </tr> <tr> <th scope="row" style="width: 20%">Dec 19, 2022</th> <td> Our paper on <a href="https://doi.org/10.3390/electronics11244239" rel="external nofollow noopener" target="_blank">optimal trajectory planning in narrow corridors</a> was published in <em>Electronics</em>. </td> </tr> <tr> <th scope="row" style="width: 20%">Jun 30, 2021</th> <td> Received my B.E. in Vehicle Engineering from Dalian University of Technology, with the honor of Excellent Graduate. </td> </tr> </table> </div> </div> <h2> <a href="/publications/" style="color: inherit">selected publications</a> </h2> <div class="publications"> <ol class="bibliography"> <li> <div class="row"> <div id="teng2026adaptive" class="col-sm-10"> <div class="title">Adaptive Constraint Regulation for Human Preference-Aware Safe Reinforcement Learning of On-Ramp Merging</div> <div class="author"> Jingjia Teng, Wenjie Huang, <em>Shijie Yuan</em>, and <span class="more-authors" title="click to view 5 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '5 more authors' ? 'Manjiang Hu, Hongmao Qin, Yang Li, Yougang Bian, Bai Li' : '5 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">5 more authors</span> </div> <div class="periodical"> <em>Machines</em>, May 2026 </div> <div class="periodical"> </div> <div class="links"> <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a> <a href="https://doi.org/10.3390/machines14060605" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> <a href="https://www.mdpi.com/2075-1702/14/6/605" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a> <a href="https://github.com/wenqing-2021/On_Ramp_Merge_Safe_RL" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a> </div> <div class="abstract hidden"> <p>Safe reinforcement learning for autonomous driving requires balancing safety constraints with driving efficiency. This paper proposes an adaptive constraint regulation framework for human preference-aware safe reinforcement learning in highway on-ramp merging scenarios. The method dynamically adjusts constraint limits according to traffic conditions and driver risk preferences, combined with an action shielding mechanism that filters unsafe decisions before execution. A hierarchical architecture separates high-level maneuver decisions from low-level model predictive control, ensuring both safety compliance and driving efficiency. Simulation experiments across varying traffic densities demonstrate that the proposed approach achieves a superior safety–efficiency trade-off compared to fixed-constraint baselines, maintaining collision-free merging while improving travel efficiency.</p> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">teng2026adaptive</span><span class="p">,</span>
+</script> <p>I am currently <strong>an independent research</strong> focused on reinforcement learning and motion planning for robotic systems. I received my M.E. in Mechanical Engineering from <a href="https://www-en.hnu.edu.cn/" rel="external nofollow noopener" target="_blank">Hunan University</a> in 2024 and my B.E. in Vehicle Engineering from <a href="https://en.dlut.edu.cn/" rel="external nofollow noopener" target="_blank">Dalian University of Technology</a> in 2021.</p> <p>At <a href="https://www.liauto.com/" rel="external nofollow noopener" target="_blank">Li Auto</a> (2024 – present), I developed learning-based trajectory planning modules that have been deployed in millions of production vehicles. My research interests include <strong>safe reinforcement learning</strong>, <strong>risk-aware motion planning</strong>, and <strong>constrained optimization</strong> for complex driving scenarios. My long-term goal is to develop safe, intelligent, and trustworthy robotic systems that assist human beings, augment human capabilities, and improve quality of life.</p> <section class="education"> <h2>Education</h2> <div class="education-list"> <div class="education-item"> <div class="education-period">2021.09–2024.06</div> <div> <p class="education-school"><a href="https://www-en.hnu.edu.cn/" rel="external nofollow noopener" target="_blank">Hunan University</a></p> <p class="education-degree">M.E. in Mechanical Engineering</p> <p class="education-detail">Thesis: The Trajectory Planning Method for Intelligent Vehicles Using Reinforcement Learning and Risk-Reachable Sets</p> </div> </div> <div class="education-item"> <div class="education-period">2017.09–2021.06</div> <div> <p class="education-school"><a href="https://en.dlut.edu.cn/" rel="external nofollow noopener" target="_blank">Dalian University of Technology</a></p> <p class="education-degree">B.E. in Vehicle Engineering</p> <p class="education-detail">Excellent Graduate of Dalian University of Technology</p> </div> </div> </div> </section> <section class="home-news" aria-labelledby="home-news-heading"> <h2 id="home-news-heading">News</h2> <div class="news"> <div class="table-responsive"> <table class="table table-sm table-borderless"> <tr> <th scope="row" style="width: 20%">May 28, 2026</th> <td> Our paper on <a href="https://doi.org/10.3390/machines14060605" rel="external nofollow noopener" target="_blank">preference-aware safe reinforcement learning for on-ramp merging</a> was published in <em>Machines</em>. </td> </tr> <tr> <th scope="row" style="width: 20%">Jul 01, 2024</th> <td> Joined Li Auto as an Autonomous Driving Algorithm Engineer, working on learning-based planning for urban driving. </td> </tr> <tr> <th scope="row" style="width: 20%">Jun 30, 2024</th> <td> Received my M.E. in Mechanical Engineering from Hunan University. </td> </tr> <tr> <th scope="row" style="width: 20%">Dec 19, 2022</th> <td> Our paper on <a href="https://doi.org/10.3390/electronics11244239" rel="external nofollow noopener" target="_blank">optimal trajectory planning in narrow corridors</a> was published in <em>Electronics</em>. </td> </tr> <tr> <th scope="row" style="width: 20%">Jun 30, 2021</th> <td> Received my B.E. in Vehicle Engineering from Dalian University of Technology, with the honor of Excellent Graduate. </td> </tr> </table> </div> </div> </section> <section class="home-publications" aria-labelledby="home-publications-heading"> <h2 id="home-publications-heading"><a href="/publications/">Selected Publications</a></h2> <div class="publications"> <ol class="bibliography"> <li> <div class="row"> <div id="teng2026adaptive" class="col-sm-10"> <div class="title">Adaptive Constraint Regulation for Human Preference-Aware Safe Reinforcement Learning of On-Ramp Merging</div> <div class="author"> Jingjia Teng, Wenjie Huang, <em>Shijie Yuan</em>, and <span class="more-authors" title="click to view 5 more authors" onclick=" var element=this; element.setAttribute('title', ''); var more_authors_text=element.textContent == '5 more authors' ? 'Manjiang Hu, Hongmao Qin, Yang Li, Yougang Bian, Bai Li' : '5 more authors'; var cursorPosition=0; var textAdder=setInterval(function(){ element.innerHTML = more_authors_text.substring(0, cursorPosition + 1); if (++cursorPosition == more_authors_text.length){ clearInterval(textAdder); } }, '10'); ">5 more authors</span> </div> <div class="periodical"> <em>Machines</em>, May 2026 </div> <div class="periodical"> </div> <div class="links"> <a class="abstract btn btn-sm z-depth-0" role="button">Abs</a> <a href="https://doi.org/10.3390/machines14060605" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">DOI</a> <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a> <a href="https://www.mdpi.com/2075-1702/14/6/605" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">HTML</a> <a href="https://github.com/wenqing-2021/On_Ramp_Merge_Safe_RL" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener" target="_blank">Code</a> </div> <div class="abstract hidden"> <p>Safe reinforcement learning for autonomous driving requires balancing safety constraints with driving efficiency. This paper proposes an adaptive constraint regulation framework for human preference-aware safe reinforcement learning in highway on-ramp merging scenarios. The method dynamically adjusts constraint limits according to traffic conditions and driver risk preferences, combined with an action shielding mechanism that filters unsafe decisions before execution. A hierarchical architecture separates high-level maneuver decisions from low-level model predictive control, ensuring both safety compliance and driving efficiency. Simulation experiments across varying traffic densities demonstrate that the proposed approach achieves a superior safety–efficiency trade-off compared to fixed-constraint baselines, maintaining collision-free merging while improving travel efficiency.</p> </div> <div class="bibtex hidden"> <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@article</span><span class="p">{</span><span class="nl">teng2026adaptive</span><span class="p">,</span>
   <span class="na">title</span> <span class="p">=</span> <span class="s">{Adaptive Constraint Regulation for Human Preference-Aware Safe Reinforcement Learning of On-Ramp Merging}</span><span class="p">,</span>
   <span class="na">author</span> <span class="p">=</span> <span class="s">{Teng, Jingjia and Huang, Wenjie and Yuan, Shijie and Hu, Manjiang and Qin, Hongmao and Li, Yang and Bian, Yougang and Li, Bai}</span><span class="p">,</span>
   <span class="na">journal</span> <span class="p">=</span> <span class="s">{Machines}</span><span class="p">,</span>
@@ -396,7 +519,7 @@
   <span class="na">month</span> <span class="p">=</span> <span class="nv">dec</span><span class="p">,</span>
   <span class="na">publisher</span> <span class="p">=</span> <span class="s">{MDPI}</span><span class="p">,</span>
   <span class="na">doi</span> <span class="p">=</span> <span class="s">{10.3390/electronics11244239}</span><span class="p">,</span>
-<span class="p">}</span></code></pre></figure> </div> </div> </div> </li> </ol> </div> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Shijie Yuan. © 2026 Shijie Yuan. Built with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="external nofollow noopener">al-folio</a> and hosted on <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Last updated: September 07, 2026. </div> </footer> <script>
+<span class="p">}</span></code></pre></figure> </div> </div> </div> </li> </ol> </div> </section> <section class="home-projects"> <h2>Research Projects</h2> <div class="project-cards"> <article class="project-card"> <div class="project-card-media"> <img src="/assets/img/projects/risk-reachable-motion-planning/risk_planing_PIC.png" alt="The Trajectory Planning Method for Intelligent Vehicles Using Reinforcement Learning and Risk-Reachable Sets project cover. Click to enlarge." data-project-cover-zoom="" loading="lazy"> </div> <a class="project-card-link" href="/projects/risk-reachable-motion-planning/" aria-label="Open project: The Trajectory Planning Method for Intelligent Vehicles Using Reinforcement Learning and Risk-Reachable Sets"> <div class="project-card-body"> <h3 class="project-card-title">The Trajectory Planning Method for Intelligent Vehicles Using Reinforcement Learning and Risk-Reachable Sets</h3> <p class="project-card-description">Safe RL and constrained optimization for structured-road trajectory planning.</p> <ul class="project-card-highlights"> <li>Builds uncertainty-aware risk-reachable sets.</li> <li>Uses PPO-Lagrangian to generate a safe initial trajectory.</li> <li>Refines the trajectory with constrained iLQR.</li> </ul> </div> </a> </article> <article class="project-card"> <div class="project-card-media"> <img src="/assets/img/projects/automated-valet-parking/automated_valet_parking_PIC.png" alt="Automated Valet Parking project cover. Click to enlarge." data-project-cover-zoom="" loading="lazy"> </div> <a class="project-card-link" href="/projects/automated-valet-parking/" aria-label="Open project: Automated Valet Parking"> <div class="project-card-body"> <h3 class="project-card-title">Automated Valet Parking</h3> <p class="project-card-description">Hybrid A* and optimization-based trajectory planning in narrow parking spaces.</p> <ul class="project-card-highlights"> <li>Searches for a collision-free path with Hybrid A*.</li> <li>Smooths the path with cubic interpolation.</li> <li>Plans speed and control with IPOPT.</li> </ul> </div> </a> </article> <article class="project-card"> <div class="project-card-media"> <img src="/assets/img/projects/safe-on-ramp-merging/SRL-MPC-architecture_0607.png" alt="Human-Aligned Safe RL for Highway On-Ramp Merging project cover. Click to enlarge." data-project-cover-zoom="" loading="lazy"> </div> <a class="project-card-link" href="/projects/safe-on-ramp-merging/" aria-label="Open project: Human-Aligned Safe RL for Highway On-Ramp Merging"> <div class="project-card-body"> <h3 class="project-card-title">Human-Aligned Safe RL for Highway On-Ramp Merging</h3> <p class="project-card-description">Preference-aware constrained RL, action shielding, and MPC for safe highway merging.</p> <ul class="project-card-highlights"> <li>Uses discrete SAC for merging decisions.</li> <li>Rejects unsafe actions with a trajectory shield.</li> <li>Executes smooth vehicle motion with MPC.</li> </ul> </div> </a> </article> </div> <p class="home-projects-link"><a href="/projects/">View all projects →</a></p> </section> <script defer src="/assets/js/project-cover-zoom.js"></script> </div> </article> </div> </div> <footer class="fixed-bottom" role="contentinfo"> <div class="container mt-0"> © Copyright 2026 Shijie Yuan. © 2026 Shijie Yuan. Built with <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="external nofollow noopener">al-folio</a> and hosted on <a href="https://pages.github.com/" target="_blank" rel="external nofollow noopener">GitHub Pages</a>. Last updated: October 18, 2026. </div> </footer> <script>
   window.alFolio = {
     compatBootstrap: false
   };
