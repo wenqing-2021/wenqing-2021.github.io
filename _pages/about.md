@@ -17,11 +17,11 @@ profile:
       <a href="https://scholar.google.com/citations?user=iLVzwyUAAAAJ&amp;hl=en" title="Google Scholar"><i class="ai ai-google-scholar"></i> Google Scholar</a>
     </div>
 
-selected_papers: true
+selected_papers: false # Rendered explicitly below to control the About section order.
 social: false
 
 announcements:
-  enabled: true
+  enabled: false # Rendered explicitly below; retain the existing news display settings.
   scrollable: false
   limit: 5
 
@@ -115,6 +115,7 @@ latest_posts:
 
   .profile-social-links a {
     color: var(--global-text-color);
+    font-family: Georgia, "Times New Roman", serif;
     font-size: 0.82rem;
     line-height: 1.6;
     text-decoration: none;
@@ -136,21 +137,24 @@ latest_posts:
   }
 
   /* --- align homepage sections with body text --- */
-  article > h2,
-  article > .news,
-  article > .publications,
+  article .home-news,
+  article .home-publications,
   article .education,
   article .home-projects {
     margin-left: 11rem;
   }
 
   .education,
+  .home-news,
+  .home-publications,
   .home-projects {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
 
   .education > h2,
+  .home-news > h2,
+  .home-publications > h2,
   .home-projects > h2 {
     font-weight: 300;
   }
@@ -199,18 +203,13 @@ latest_posts:
   .home-projects .project-card {
     display: grid;
     grid-template-columns: minmax(10rem, 32%) minmax(0, 1fr);
+    align-items: center;
+    column-gap: 1.5rem;
     min-width: 0;
-    overflow: hidden;
-    border: 1px solid var(--global-divider-color);
-    border-radius: 0.65rem;
-    background: var(--global-card-bg-color);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .home-projects .project-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.09);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   .home-projects .project-card-media {
@@ -220,8 +219,8 @@ latest_posts:
     width: 100%;
     aspect-ratio: 4 / 3;
     overflow: hidden;
-    border-right: 1px solid var(--global-divider-color);
-    background: color-mix(in srgb, var(--global-theme-color) 4%, var(--global-card-bg-color));
+    border: 0;
+    background: transparent;
   }
 
   .home-projects .project-card-media img {
@@ -247,7 +246,7 @@ latest_posts:
   .home-projects .project-card-body {
     display: flex;
     flex-direction: column;
-    padding: 0.9rem 1rem 1rem;
+    padding: 0;
   }
 
   .home-projects .project-card-title {
@@ -300,18 +299,19 @@ latest_posts:
   }
 
   /* --- keep news dates close to their corresponding events --- */
-  article > .news th[scope="row"] {
+  .home-news .news th[scope="row"] {
     width: 1% !important;
     padding-right: 1rem;
     white-space: nowrap;
   }
 
-  article > .news td {
+  .home-news .news td {
     padding-left: 0;
   }
 
   /* --- divider under section headings --- */
-  article > h2,
+  .home-news > h2,
+  .home-publications > h2,
   .education > h2,
   .home-projects > h2 {
     border-bottom: 1px solid #e0e0e0;
@@ -319,35 +319,144 @@ latest_posts:
     margin-bottom: 0.8rem;
   }
 
-  /* --- capitalize "news", remove its link --- */
-  article > h2:has(+ .news) {
-    text-transform: capitalize;
+  /* --- About-only publication rows, matching the reference layout --- */
+  .home-publications > h2 {
+    margin-bottom: 1.75rem;
+    padding-bottom: 0;
+    border-bottom: 0;
     font-weight: 300;
-  }
-  article > h2:has(+ .news) a {
-    pointer-events: none;
-    text-decoration: none;
-    color: inherit;
+    text-transform: capitalize;
   }
 
-  /* --- rename "selected publications" → "Publications" --- */
-  article > h2:has(+ .publications) {
-    font-weight: 300;
+  .home-publications > h2 a {
+    color: inherit;
+    text-decoration: none;
   }
-  article > h2:has(+ .publications) a {
-    font-size: 0;
-    pointer-events: none;
+
+  .home-publications > .publications ol.bibliography {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
-  article > h2:has(+ .publications) a::before {
-    content: "Publications";
-    font-size: 2rem;
+
+  .home-publications > .publications ol.bibliography > li {
+    margin: 0 0 2rem;
+    padding: 0;
+  }
+
+  .home-publications > .publications .row {
+    display: grid;
+    grid-template-columns: 12.5rem minmax(0, 1fr);
+    grid-template-rows: min-content min-content;
+    gap: 0.45rem 1.8rem;
+    align-items: start;
+    margin: 0;
+  }
+
+  .home-publications > .publications .row:has(#teng2026adaptive) {
+    --publication-venue: "Machines";
+    --publication-preview: url("{{ '/assets/img/projects/safe-on-ramp-merging/SRL-MPC-architecture_0607.png' | relative_url }}");
+  }
+
+  .home-publications > .publications .row:has(#xu2022space) {
+    --publication-venue: "Electronics";
+    --publication-preview: url("{{ '/assets/img/publication_preview/corridor-fig10.png' | relative_url }}");
+  }
+
+  .home-publications > .publications .row::before {
+    content: var(--publication-venue);
+    grid-column: 1;
+    grid-row: 1;
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.2rem;
+    background: #bf4667;
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .home-publications > .publications .row::after {
+    content: "";
+    grid-column: 1;
+    grid-row: 2;
+    width: 100%;
+    aspect-ratio: 8 / 5;
+    border-radius: 0.25rem;
+    background: #fff var(--publication-preview) center / contain no-repeat;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .home-publications > .publications .row > div[id] {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .home-publications > .publications .title {
+    margin-bottom: 0.1rem;
+    color: var(--global-text-color);
+    font-weight: 500;
+  }
+
+  .home-publications > .publications .author {
     color: var(--global-text-color);
   }
 
+  .home-publications > .publications .author em {
+    font-style: normal;
+    text-decoration: none;
+  }
+
+  .home-publications > .publications .periodical {
+    margin: 0;
+  }
+
+  .home-publications > .publications .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.6rem;
+    margin-top: 0.4rem;
+  }
+
+  .home-publications > .publications .links .btn {
+    min-width: 3.4rem;
+    margin: 0;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid var(--global-text-color);
+    border-radius: 0;
+    background: transparent;
+    color: var(--global-text-color);
+    box-shadow: none;
+    font-size: 0.65rem;
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .home-publications > .publications .links .btn:hover,
+  .home-publications > .publications .links .btn:focus-visible {
+    border-color: var(--global-theme-color);
+    color: var(--global-theme-color);
+  }
+
+  @media (min-width: 576px) and (max-width: 991.98px) {
+    .home-publications > .publications .row {
+      grid-template-columns: 10rem minmax(0, 1fr);
+      column-gap: 1.25rem;
+    }
+  }
+
   @media (max-width: 767.98px) {
-    article > h2,
-    article > .news,
-    article > .publications,
+    article .home-news,
+    article .home-publications,
     article .education,
     article .home-projects {
       margin-left: 0;
@@ -357,12 +466,26 @@ latest_posts:
   @media (max-width: 575.98px) {
     .home-projects .project-card {
       grid-template-columns: minmax(0, 1fr);
+      row-gap: 0.8rem;
     }
 
     .home-projects .project-card-media {
       aspect-ratio: 4 / 3;
-      border-right: 0;
-      border-bottom: 1px solid var(--global-divider-color);
+    }
+
+    .home-publications > .publications .row {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 0.6rem;
+    }
+
+    .home-publications > .publications .row::before,
+    .home-publications > .publications .row::after {
+      width: min(100%, 12.5rem);
+    }
+
+    .home-publications > .publications .row > div[id] {
+      grid-column: 1;
+      grid-row: 3;
     }
 
     .education-item {
@@ -413,8 +536,18 @@ At [Li Auto](https://www.liauto.com/) (2024 – present), I developed learning-b
   </div>
 </section>
 
+<section class="home-news" aria-labelledby="home-news-heading">
+  <h2 id="home-news-heading">News</h2>
+  {% include news.liquid limit=true %}
+</section>
+
+<section class="home-publications" aria-labelledby="home-publications-heading">
+  <h2 id="home-publications-heading"><a href="{{ '/publications/' | relative_url }}">Selected Publications</a></h2>
+  {% include selected_papers.liquid %}
+</section>
+
 <section class="home-projects">
-  <h2>Projects</h2>
+  <h2>Research Projects</h2>
   {% assign sorted_projects = site.projects | sort: "importance" %}
   <div class="project-cards">
     {% for project in sorted_projects %}
